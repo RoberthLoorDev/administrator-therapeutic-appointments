@@ -1,23 +1,36 @@
-# Proyecto XYZ
+# Cómo hacer commits
 
-## Guía de Estilos para Commits
+## Introducción
 
-Este proyecto sigue una convención de estilos para los mensajes de confirmación (commits) con el objetivo de mantener un historial de cambios limpio y comprensible. A continuación se detallan los prefijos utilizados y su significado:
+Los commits son cambios que haces en el código de tu proyecto. Los commits se utilizan para rastrear los cambios en el código, revertir los cambios que causen problemas y colaborar con otros desarrolladores.
 
-- **feat**: Se utiliza para nuevas características o funcionalidades agregadas al proyecto.
-- **fix**: Se utiliza para corrección de errores.
-- **refactor**: Se utiliza para modificaciones del código que no agregan nuevas características ni corrigen errores, sino que mejoran la estructura, legibilidad o rendimiento del código existente.
-- **docs**: Se utiliza para cambios en la documentación del proyecto.
-- **chore**: Se utiliza para tareas de mantenimiento, actualización de dependencias, configuración, etc.
-- **style**: Se utiliza para cambios relacionados con el estilo de código, como espacios en blanco, formato, nombres de variables, etc., que no afectan la funcionalidad.
+## Buenas prácticas para hacer commits
 
-Además, se recomienda seguir estas mejores prácticas al escribir mensajes de confirmación:
+Aquí hay algunas buenas prácticas para hacer commits:
 
-- Utilizar un lenguaje claro y conciso.
-- Incluir una descripción breve pero informativa del cambio realizado.
-- Evitar escribir mensajes demasiado largos o ambiguos.
-- Utilizar verbos en infinitivo para indicar acciones.
-- Separar el prefijo del mensaje con dos puntos y un espacio.
+* **Escribe un mensaje de commit claro y conciso.** El mensaje de commit debe explicar claramente lo que se cambió en el código.
+* **Usa las palabras clave "feat", "fix", "docs", "test", "chore" y "style" para categorizar tus commits.** Esto ayudará a tu equipo a comprender el propósito de cada commit.
+* **Agrega una URL a la documentación o prueba que cubra el cambio.** Esto ayudará a tu equipo a encontrar más información sobre el cambio.
+* **Haz commits frecuentes.** Esto hará que sea más fácil rastrear los cambios en el código y revertir cualquier cambio que cause problemas.
+* **Comprueba tus commits.** Esto ayudará a asegurar que el código esté libre de errores.
+* **Haz un merge de tus commits en la rama principal.** Esto hará que el código esté disponible para el resto del equipo.
 
-Ejemplos de mensajes de confirmación válidos:
+## Explicación de las palabras clave
 
+Aquí hay una explicación de cada palabra clave:
+
+* **"Feat":** Un nuevo feature o característica.
+* **"Fix":** Una corrección de un error.
+* **"Docs":** Un cambio en la documentación.
+* **"Test":** Un nuevo test o una actualización de un test existente.
+* **"Chore":** Un cambio que no afecta al código, como limpiar el código o cambiar la configuración.
+* **"Style":** Un cambio en el estilo del código, como cambiar el formato o agregar comentarios.
+
+## Ejemplo de mensaje de commit
+
+Aquí hay un ejemplo de un mensaje de commit:
+
+
+feat: agrega un nuevo botón para guardar el formulario
+
+Este cambio agrega un nuevo botón para guardar el formulario. El botón se encuentra en la esquina inferior derecha del formulario y tiene la etiqueta "Guardar". Cuando el usuario hace clic en el botón, el formulario se guardará en la base de datos.

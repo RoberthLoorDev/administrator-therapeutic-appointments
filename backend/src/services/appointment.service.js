@@ -14,6 +14,9 @@ exports.createAppointment = async (appointmentBody) => {
     const userCreation = await UserService.createUser(userBody);
 
     const newAppointment = new AppointmentModel({
+
+        
+
         idUser: appointmentBody.idUser,
         monthDay: appointmentBody.monthDay,
         weekDay: appointmentBody.weekDay,
