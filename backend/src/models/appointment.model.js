@@ -5,27 +5,27 @@ const appointmentSchema = new Schema(
         idUser: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "user",
-            require: true,
+            required: true,
             trim: true,
         },
         monthDay: {
             type: String,
-            require: true,
+            required: true,
             trim: true,
         },
         weekDay: {
             type: String,
-            require: true,
+            required: true,
             trim: true,
         },
         month: {
             type: String,
-            require: true,
+            required: true,
             trim: true,
         },
         hour: {
             type: String,
-            require: true,
+            required: true,
             trim: true,
         },
         typeTherapy: {

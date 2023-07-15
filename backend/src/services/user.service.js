@@ -6,18 +6,33 @@ exports.createUser = async (userBody) => {
     });
 
     if (existingUser) {
-        throw new Error("El usuario ya existe");
+        const userToUpdate = UserModel.findOneAndUpdate(
+            {
+                identification: userBody.identification,
+            },
+            {
+                $set: {
+                    names: userBody.names,
+                    lastnames: userBody.lastnames,
+                    email: userBody.email,
+                    gender: userBody.gender,
+                    age: userBody.age,
+                },
+            }
+        );
+
+        return userToUpdate;
+    } else {
+        const newUser = new UserModel({
+            names: userBody.names,
+            lastnames: userBody.lastnames,
+            identification: userBody.identification,
+            email: userBody.email,
+            gender: userBody.gender,
+            age: userBody.age,
+        });
+
+        const userCreated = await newUser.save();
+        return userCreated;
     }
-
-    const newUser = new UserModel({
-        names: userBody.names,
-        lastnames: userBody.lastnames,
-        identification: userBody.identification,
-        email: userBody.email,
-        gender: userBody.gender,
-        age: userBody.age,
-    });
-
-    const userCreated = await newUser.save();
-    return userCreated;
 };

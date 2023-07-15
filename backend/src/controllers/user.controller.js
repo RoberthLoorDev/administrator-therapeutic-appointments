@@ -5,7 +5,7 @@ exports.createUser = async (req, res) => {
     try {
         const { body } = req;
         const user = await UserService.createUser(body);
-        return handleSucces(res, user, "Usuario creado exitosamente");
+        return handleSucces(res, user, "Usuario registrado exitosamente");
     } catch (e) {
         return handleError(res, e);
     }
