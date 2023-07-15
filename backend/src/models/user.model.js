@@ -4,17 +4,17 @@ const userSchema = new Schema(
     {
         names: {
             type: String,
-            require: true,
+            required: true,
         },
 
         lastnames: {
             type: String,
-            require: true,
+            required: true,
         },
 
         identification: {
             type: String,
-            require: true,
+            required: true,
             unique: true,
         },
 
@@ -27,7 +27,7 @@ const userSchema = new Schema(
         },
 
         age: {
-            require: true,
+            required: true,
             type: Number,
         },
     },
