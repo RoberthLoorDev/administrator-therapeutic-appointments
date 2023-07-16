@@ -42,3 +42,13 @@ exports.consultAppointmentsForIdentification = async (userId) => {
 
     return { appointment, userData };
 };
+
+exports.deteleAppointmentForId = async (appointmentId) => {
+    const appointmentEliminated = AppointmentModel.findOneAndDelete({
+        _id: appointmentId,
+    });
+
+    if (!appointmentEliminated) throw new Error("No existe cita con ese ID");
+
+    return appointmentEliminated;
+};

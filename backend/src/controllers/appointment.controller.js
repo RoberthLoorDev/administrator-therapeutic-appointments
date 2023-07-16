@@ -19,8 +19,19 @@ exports.consultAppointmentsForIdentification = async (req, res) => {
                 identification
             );
         return handleSucces(res, appointment, "Consulta exitosa:");
-        
     } catch (error) {
         handleError(res, error);
+    }
+};
+
+exports.deteleAppointmentForId = async (req, res) => {
+    try {
+        const appointmentId = req.params.id;
+        const appointment = await AppointmentService.deteleAppointmentForId(
+            appointmentId
+        );
+        return handleSucces(res, appointment, "Cita eliminada existosamente");
+    } catch (error) {
+        handleError(res, error)
     }
 };
