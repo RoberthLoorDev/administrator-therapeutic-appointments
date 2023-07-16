@@ -10,3 +10,17 @@ exports.createAppointment = async (req, res) => {
         return handleError(res, error);
     }
 };
+
+exports.consultAppointmentsForIdentification = async (req, res) => {
+    try {
+        const identification = req.params.identification;
+        const appointment =
+            await AppointmentService.consultAppointmentsForIdentification(
+                identification
+            );
+        return handleSucces(res, appointment, "Consulta exitosa:");
+        
+    } catch (error) {
+        handleError(res, error);
+    }
+};

@@ -2,8 +2,8 @@ const { model, Schema, default: mongoose } = require("mongoose");
 
 const appointmentSchema = new Schema(
     {
-        idUser: {
-            type: mongoose.Schema.Types.ObjectId,
+        userIdentification: {
+            type: String,
             ref: "user",
             required: true,
             trim: true,
@@ -39,6 +39,10 @@ const appointmentSchema = new Schema(
         },
         reasonForConsultation: {
             type: String,
+        },
+        status: {
+            type: String,
+            default: "pending",
         },
     },
 

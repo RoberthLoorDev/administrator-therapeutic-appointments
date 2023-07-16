@@ -14,10 +14,7 @@ exports.createAppointment = async (appointmentBody) => {
     const userCreation = await UserService.createUser(userBody);
 
     const newAppointment = new AppointmentModel({
-
-        
-
-        idUser: appointmentBody.idUser,
+        userIdentification: appointmentBody.userIdentification,
         monthDay: appointmentBody.monthDay,
         weekDay: appointmentBody.weekDay,
         month: appointmentBody.month,
@@ -30,4 +27,18 @@ exports.createAppointment = async (appointmentBody) => {
 
     const appointmentCreated = await newAppointment.save();
     return { appointmentCreated, userCreation };
+};
+
+exports.consultAppointmentsForIdentification = async (userId) => {
+    const appointment = await AppointmentModel.findOne({
+        userIdentification: userId,
+        status: "pending",
+    });
+
+    if (!appointment || appointment.length == 0)
+        throw new Error("No existen citas con esa cedula");
+
+    const userData = await UserService.consultUserForIdentification(userId);
+
+    return { appointment, userData };
 };

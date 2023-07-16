@@ -10,3 +10,14 @@ exports.createUser = async (req, res) => {
         return handleError(res, e);
     }
 };
+
+exports.consultUserForIdentification = async (req, res) => {
+    try {
+        const identification = req.params.identification;
+        const user = await UserService.consultUserForIdentification(identification);
+
+        return handleSucces(res, user, "Usuario consultado exitosamente");
+    } catch (error) {
+        handleError(res, error);
+    }
+};

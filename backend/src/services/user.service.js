@@ -36,3 +36,13 @@ exports.createUser = async (userBody) => {
         return userCreated;
     }
 };
+
+exports.consultUserForIdentification = async (identification) => {
+    const user = await UserModel.findOne({
+        identification: identification,
+    });
+
+    if (!user) throw new Error("Usuario no encontrado");
+
+    return user;
+};
