@@ -35,8 +35,7 @@ exports.consultAppointmentsForIdentification = async (userId) => {
         status: "pending",
     });
 
-    if (!appointment || appointment.length == 0)
-        throw new Error("No existen citas con esa cedula");
+    if (!appointment || appointment.length == 0) throw new Error("No existen citas con esa cedula");
 
     const userData = await UserService.consultUserForIdentification(userId);
 
@@ -51,4 +50,18 @@ exports.deteleAppointmentForId = async (appointmentId) => {
     if (!appointmentEliminated) throw new Error("No existe cita con ese ID");
 
     return appointmentEliminated;
+};
+
+//verification appointment date
+exports.checkAppointmentAvailability = async (appointmentDate) => {
+    const appointment = await AppointmentModel.findOne({
+        month: appointmentDate.month,
+        monthDay: appointmentDate.monthDay,
+        weekDay: appointmentDate.weekDay,
+        hour: appointmentDate.hour,
+    });
+
+    if (appointment) throw new Error("Horario no disponible: Por favor, elija otro horario");
+
+    return appointment;
 };
