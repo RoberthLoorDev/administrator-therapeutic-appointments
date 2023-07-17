@@ -35,7 +35,7 @@ exports.consultAppointmentsForIdentification = async (userId) => {
         status: "pending",
     });
 
-    if (!appointment || appointment.length == 0) throw new Error("No existen citas con esa cedula");
+    if (!appointment || appointment.length == 0) throw new Error("Usted no tiene citas pendientes");
 
     const userData = await UserService.consultUserForIdentification(userId);
 
@@ -43,7 +43,7 @@ exports.consultAppointmentsForIdentification = async (userId) => {
 };
 
 exports.deteleAppointmentForId = async (appointmentId) => {
-    const appointmentEliminated = AppointmentModel.findOneAndDelete({
+    const appointmentEliminated = await AppointmentModel.findOneAndDelete({
         _id: appointmentId,
     });
 

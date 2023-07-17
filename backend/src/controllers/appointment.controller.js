@@ -25,7 +25,7 @@ exports.deteleAppointmentForId = async (req, res) => {
     try {
         const appointmentId = req.params.id;
         const appointment = await AppointmentService.deteleAppointmentForId(appointmentId);
-        return handleSucces(res, appointment, "Cita eliminada existosamente");
+        return handleSucces(res, appointment, "Cita eliminada correctamente");
     } catch (error) {
         handleError(res, error);
     }
