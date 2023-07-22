@@ -30,47 +30,9 @@ exports.createAppointment = async (appointmentBody) => {
     const appointmentCreated = await newAppointment.save();
 
     //send mail
-    if ((appointmentCreated, userCreation)) this.sendMailToAdmin(appointmentCreated, userCreation);
+    if ((appointmentCreated, userCreation)) sendMailToAdmin(appointmentCreated, userCreation);
 
     return { appointmentCreated, userCreation };
-};
-
-exports.sendMailToAdmin = async (appointmentCreated, userCreation) => {
-    const transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-            user: Config.GmailUser,
-            pass: Config.GmailPassword,
-        },
-    });
-
-    const mailOptions = {
-        from: Config.GmailUser,
-        to: Config.GmailReciver,
-        subject: "NUEVA CITA CREADA",
-        text: `Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.
-        Fecha: ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month}
-        Hora: ${appointmentCreated.hour}
-        Tipo de terapia: ${appointmentCreated.typeTherapy}
-        Recibió terapia previamente: ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}
-        Método de pago esperado: ${appointmentCreated.expectedPaymentMethod}
-        Motivo de consulta: ${appointmentCreated.reasonForConsultation}`,
-        html: `<p>Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.</p>
-        <p><strong>Fecha:</strong> ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month}</p>
-        <p><strong>Hora:</strong> ${appointmentCreated.hour}</p>
-        <p><strong>Tipo de terapia:</strong> ${appointmentCreated.typeTherapy}</p>
-        <p><strong>Recibió terapia previamente:</strong> ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}</p>
-        <p><strong>Método de pago esperado:</strong> ${appointmentCreated.expectedPaymentMethod}</p>
-        <p><strong>Motivo de consulta:</strong> ${appointmentCreated.reasonForConsultation}</p>`,
-    };
-
-    try {
-        //send mail
-        const info = await transporter.sendMail(mailOptions);
-        console.log("Correo enviado correctamente", info);
-    } catch (error) {
-        console.log(error);
-    }
 };
 
 exports.consultAppointmentsForIdentification = async (userId) => {
@@ -108,4 +70,42 @@ exports.checkAppointmentAvailability = async (appointmentDate) => {
     if (appointment) throw new Error("Horario no disponible: Por favor, elija otro horario");
 
     return appointment;
+};
+
+const sendMailToAdmin = async (appointmentCreated, userCreation) => {
+    const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: Config.GmailUser,
+            pass: Config.GmailPassword,
+        },
+    });
+
+    const mailOptions = {
+        from: Config.GmailUser,
+        to: Config.GmailReciver,
+        subject: `CITA CREADA: Fecha: ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month} - Hora: ${appointmentCreated.hour}`,
+        text: `Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.
+                Fecha: ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month}
+                Hora: ${appointmentCreated.hour}
+                Tipo de terapia: ${appointmentCreated.typeTherapy}
+                Recibió terapia previamente: ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}
+                Método de pago esperado: ${appointmentCreated.expectedPaymentMethod}
+                Motivo de consulta: ${appointmentCreated.reasonForConsultation}`,
+        html: `<p>Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.</p>
+                <p><strong>Fecha:</strong> ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month}</p>
+                <p><strong>Hora:</strong> ${appointmentCreated.hour}</p>
+                <p><strong>Tipo de terapia:</strong> ${appointmentCreated.typeTherapy}</p>
+                <p><strong>Recibió terapia previamente:</strong> ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}</p>
+                <p><strong>Método de pago esperado:</strong> ${appointmentCreated.expectedPaymentMethod}</p>
+                <p><strong>Motivo de consulta:</strong> ${appointmentCreated.reasonForConsultation}</p>`,
+    };
+
+    try {
+        //send mail
+        const info = await transporter.sendMail(mailOptions);
+        console.log("Correo enviado correctamente", info);
+    } catch (error) {
+        console.log(error);
+    }
 };
