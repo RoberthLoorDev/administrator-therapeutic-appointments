@@ -1,5 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
+
+
+//styles
+import "./style.css";
+
 //pages
 import Home from "./pages/Home";
 

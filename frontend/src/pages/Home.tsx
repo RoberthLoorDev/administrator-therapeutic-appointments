@@ -1,8 +1,12 @@
+//components
+
+import NabvarComponent from "../components/BodyComponent";
+
 function Home() {
     return (
-        <div>
-            <h2>Home</h2>
-        </div>
+        <>
+            <NabvarComponent></NabvarComponent>
+        </>
     );
 }
 
