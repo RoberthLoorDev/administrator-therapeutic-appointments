@@ -9,14 +9,17 @@ function NabvarComponent() {
             </section>
             <section className="image-header">
                 <img src={images.image_header} alt="" />
-                <div className="text-image-header"></div>
-                <span className="span-title-header">Terapia ocupacional</span>
-                <h1 className="h1-title-header">Licenciado Carlos Toainga</h1>
+                <div className="text-image-header">
+                    <span className="span-title-header">Terapia ocupacional</span>
+                    <h1 className="h1-title-header">Licenciado Carlos Toainga</h1>
+                    <div className="buttons-header">
+                        <button className="button-header">Consultar cita</button>
+                        <button className="button-header">Crear cita</button>
+                    </div>
+                </div>
             </section>
 
-            <section className="form-create-appointment">
-
-            </section>
+            <section className="form-create-appointment"></section>
         </>
     );
 }
