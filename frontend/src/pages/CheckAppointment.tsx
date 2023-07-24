@@ -1,9 +1,10 @@
+import AlertComponent from "../components/AlertComponent";
 import NabvarComponent from "../components/NabvarComponent";
 import { Link } from "react-router-dom";
+import PatientsData from "../components/PatientsData";
 function CheckAppointment() {
     return (
         <div>
-            <NabvarComponent />
             <div className="global-container">
                 <div className="form-contact-container">
                     <div className="margin-container-form-contact">
@@ -15,14 +16,14 @@ function CheckAppointment() {
                                     <input type="text" />
                                     <input type="submit" value="Consultar" className="input-submit" />
                                 </div>
-                                <div className="container-alert">
-                                    <div className="alert-div">
-                                        <span>Usted no tiene citas pendientes</span>
-                                    </div>
+                                <AlertComponent></AlertComponent>
+                                <PatientsData></PatientsData>
+                                <div className="buttons-exit-eliminate">
+                                    <Link to="/">
+                                        <button>Salir</button>
+                                    </Link>
+                                    <button className="eliminate-appointment-button">Eliminar Cita</button>
                                 </div>
-                                <Link to="/">
-                                    <button>Salir</button>
-                                </Link>
                             </form>
                         </div>
                     </div>

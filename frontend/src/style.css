@@ -123,7 +123,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 90%;
     width: 100%;
 }
 
@@ -131,16 +131,19 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30rem;
     width: 70rem;
+    height: auto;
     background-color: white;
     border: none;
     border-radius: 5px;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
 }
 
 .margin-container-form-contact {
     height: 80%;
     width: 90%;
+    padding: 3rem 0;
 }
 
 .margin-container-form-contact h2 {
@@ -206,6 +209,24 @@ button:hover {
     cursor: pointer;
 }
 
+.buttons-exit-eliminate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.eliminate-appointment-button {
+    background-color: #ca0a0a;
+}
+
+.eliminate-appointment-button:hover {
+    transition: 200ms;
+    background-color: rgb(150, 19, 19);
+}
+
+.eliminate-appointment-button:active {
+    background-color: rgb(124, 19, 19);
+}
+
 .container-alert {
     width: 100%;
     display: flex;
@@ -227,5 +248,32 @@ button:hover {
 .alert-div span {
     font-size: 2rem;
     font-weight: 700;
+    color: #505052;
+}
+
+.container-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    width: 100%;
+    height: 20rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+}
+
+.margin-container-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 95%;
+    height: 80%;
+}
+
+.margin-container-data span {
+    font-size: 1.5rem;
+}
+
+b {
     color: #505052;
 }
