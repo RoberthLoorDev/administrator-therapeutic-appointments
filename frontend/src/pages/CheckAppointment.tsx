@@ -9,14 +9,13 @@ function CheckAppointment() {
                 <div className="form-contact-container">
                     <div className="margin-container-form-contact">
                         <div className="containe-check-appointment">
-                            <h2>Consultar Cita</h2>
+                            <h2 className="h2-page-title">Consultar Cita</h2>
                             <form action="">
                                 <label htmlFor="">Ingrese su número de cédula</label>
                                 <div className="input-button">
                                     <input type="text" />
                                     <input type="submit" value="Consultar" className="input-submit" />
                                 </div>
-                                <AlertComponent></AlertComponent>
                                 <PatientsData></PatientsData>
                                 <div className="buttons-exit-eliminate">
                                     <Link to="/">

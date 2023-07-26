@@ -1,5 +1,6 @@
 //images
 import images from "../assets/img/images";
+import AlertComponent from "../components/AlertComponent";
 
 //components
 import NabvarComponent from "../components/NabvarComponent";
@@ -19,7 +20,9 @@ function Home() {
                         <Link to="/consultar-cita">
                             <button className="button-header">Consultar cita</button>
                         </Link>
-                        <button className="button-header">Crear cita</button>
+                        <Link to="/crear-cita">
+                            <button className="button-header">Crear cita</button>
+                        </Link>
                     </div>
                 </div>
             </section>
