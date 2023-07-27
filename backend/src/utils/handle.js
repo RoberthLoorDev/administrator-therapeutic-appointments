@@ -16,3 +16,21 @@ exports.handleError = (res, e) => {
         message,
     });
 };
+
+exports.handleNotFound = (res, message) => {
+    return res.status(404).json({
+        error: true,
+        data: null,
+        status: 404,
+        message,
+    });
+};
+
+exports.handleConflict = (res, message) => {
+    return res.status(409).json({
+        error: true,
+        data: null,
+        status: 409,
+        message,
+    });
+};

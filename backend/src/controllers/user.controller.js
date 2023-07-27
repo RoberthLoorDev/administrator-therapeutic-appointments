@@ -1,5 +1,5 @@
 const { UserService } = require("../services/index");
-const { handleError, handleSucces } = require("../utils/handle");
+const { handleError, handleSucces, handleNotFound } = require("../utils/handle");
 
 exports.createUser = async (req, res) => {
     try {
@@ -18,6 +18,7 @@ exports.consultUserForIdentification = async (req, res) => {
 
         return handleSucces(res, user, "Usuario consultado exitosamente");
     } catch (error) {
-        handleError(res, error);
+        // console.log(error)
+        handleNotFound(res, "Usuario no encontrado");
     }
 };

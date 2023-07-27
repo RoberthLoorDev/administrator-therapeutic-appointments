@@ -1,5 +1,5 @@
 const { AppointmentService } = require("../services");
-const { handleError, handleSucces } = require("../utils/handle");
+const { handleError, handleSucces, handleNotFound, handleConflict } = require("../utils/handle");
 
 exports.createAppointment = async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -20,7 +20,8 @@ exports.consultAppointmentsForIdentification = async (req, res) => {
         const appointment = await AppointmentService.consultAppointmentsForIdentification(identification);
         return handleSucces(res, appointment, "Consulta exitosa:");
     } catch (error) {
-        handleError(res, error);
+        // console.log(error);
+        handleNotFound(res, "Usted no tiene citas pendientes");
     }
 };
 
@@ -44,6 +45,8 @@ exports.checkAppointmentAvailability = async (req, res) => {
         const appointmentDate = await AppointmentService.checkAppointmentAvailability(body);
         return handleSucces(res, appointmentDate, "Horario disponible");
     } catch (error) {
-        handleError(res, error);
+        console.log(error);
+        handleConflict(res, "Horario no disponible: Por favor, elija otro horario");
+        // handleError(res, error);
     }
 };
