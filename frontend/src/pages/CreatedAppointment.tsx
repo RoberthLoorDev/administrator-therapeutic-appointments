@@ -9,7 +9,7 @@ function CreatedAppointment() {
                 <div className="form-contact-container">
                     <div className="margin-container-form-contact">
                         <h2 className="h2-page-title">Cita creada correctamente</h2>
-                        <PatientsData></PatientsData>
+                        {/* <PatientsData></PatientsData> */}
                         <Link to="/">
                             <button>Salir</button>
                         </Link>

@@ -211,6 +211,7 @@ button:hover {
 .buttons-exit-eliminate {
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
 }
 
 .eliminate-appointment-button {
@@ -258,7 +259,6 @@ button:hover {
     background-color: #f4f4f4;
     width: 100%;
     height: 20rem;
-    margin-bottom: 2rem;
     margin-top: 2rem;
     border-radius: 5px;
 }
