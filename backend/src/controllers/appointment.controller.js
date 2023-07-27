@@ -2,6 +2,8 @@ const { AppointmentService } = require("../services");
 const { handleError, handleSucces } = require("../utils/handle");
 
 exports.createAppointment = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try {
         const { body } = req;
         const appointment = await AppointmentService.createAppointment(body);
@@ -12,6 +14,7 @@ exports.createAppointment = async (req, res) => {
 };
 
 exports.consultAppointmentsForIdentification = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     try {
         const identification = req.params.identification;
         const appointment = await AppointmentService.consultAppointmentsForIdentification(identification);
@@ -22,6 +25,8 @@ exports.consultAppointmentsForIdentification = async (req, res) => {
 };
 
 exports.deteleAppointmentForId = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try {
         const appointmentId = req.params.id;
         const appointment = await AppointmentService.deteleAppointmentForId(appointmentId);
@@ -32,6 +37,8 @@ exports.deteleAppointmentForId = async (req, res) => {
 };
 
 exports.checkAppointmentAvailability = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     try {
         const { body } = req;
         const appointmentDate = await AppointmentService.checkAppointmentAvailability(body);
