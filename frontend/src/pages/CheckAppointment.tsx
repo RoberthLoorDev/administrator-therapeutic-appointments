@@ -3,21 +3,22 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PatientsData from "../components/PatientsData";
 import AlertComponent from "../components/AlertComponent";
+
 function CheckAppointment() {
     const [userIdentification, setUserIdentification] = useState("");
     const [patientData, setPatientData] = useState<any>(null);
-    const [hasError, setHasError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+    const [isError, setIsError] = useState(Boolean);
 
     const handleForSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             const response = await axios.get(`http://localhost:5000/api/appointments/consult/${userIdentification}`);
             const { data } = response;
-            console.log(data.status);
 
-            //data selection
             const selectedData = {
+                id: `${data.data.appointment._id}`,
                 names: `${data.data.userData.names} ${data.data.userData.lastnames}`,
                 userIdentification: data.data.userData.identification,
                 typeTherapy: data.data.appointment.typeTherapy,
@@ -25,16 +26,40 @@ function CheckAppointment() {
                 hour: data.data.appointment.hour,
                 reasonForConsultation: data.data.appointment.reasonForConsultation,
             };
-
-            setHasError(false);
-            setErrorMessage("");
-            setPatientData(selectedData);
-            //
+            if (selectedData.userIdentification < 10) {
+                setIsError(true);
+                setAlertMessage("Por favor, ingrese un número de cédula correcto");
+                setShowAlert(true);
+            } else {
+                setShowAlert(false);
+                setAlertMessage("");
+                setPatientData(selectedData);
+            }
         } catch (e: any) {
-            // console.log(error);
-            setHasError(true);
-            setErrorMessage(e.response.data.message);
+            setIsError(true);
+            setShowAlert(true);
+            setAlertMessage("Por favor, ingrese un número de cédula correcto");
             setPatientData(null);
+        }
+    };
+
+    const handleEliminateAppointment = async () => {
+        try {
+            if (!patientData) {
+                setIsError(true);
+                setAlertMessage("Por favor, ingrese un número de cédula correcto");
+                setShowAlert(true);
+            } else {
+                await axios.get(`http://localhost:5000/api/appointments/delete/${patientData.id}`);
+
+                // Mostrar un mensaje de éxito en lugar de error
+                setIsError(false);
+                setShowAlert(true);
+                setAlertMessage("¡La cita se eliminó con éxito!");
+                setPatientData(null);
+            }
+        } catch (error) {
+            console.log(error);
         }
     };
 
@@ -50,6 +75,7 @@ function CheckAppointment() {
                                 <div className="input-button">
                                     <input
                                         type="text"
+                                        maxLength={10}
                                         value={userIdentification}
                                         onChange={(e) => {
                                             setUserIdentification(e.target.value);
@@ -57,12 +83,14 @@ function CheckAppointment() {
                                     />
                                     <input type="submit" value="Consultar" className="input-submit" />
                                 </div>
-                                {hasError === true ? <AlertComponent message={errorMessage}></AlertComponent> : patientData && <PatientsData patient={patientData} />}
+                                {showAlert === true ? <AlertComponent message={alertMessage} isError={isError} /> : patientData && <PatientsData patient={patientData} />}
                                 <div className="buttons-exit-eliminate">
                                     <Link to="/">
                                         <button>Salir</button>
                                     </Link>
-                                    <button className="eliminate-appointment-button">Eliminar Cita</button>
+                                    <button type="button" className="eliminate-appointment-button" onClick={handleEliminateAppointment}>
+                                        Eliminar Cita
+                                    </button>
                                 </div>
                             </form>
                         </div>

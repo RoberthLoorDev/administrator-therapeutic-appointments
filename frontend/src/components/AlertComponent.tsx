@@ -3,14 +3,16 @@ import React from "react";
 
 interface AlertComponentProps {
     message: string;
+    isError: boolean;
 }
 
-function AlertComponent({ message }: AlertComponentProps) {
-    console.log(message);
+function AlertComponent({ message, isError }: AlertComponentProps) {
+    const alertClassName = isError ? "alert-div-error" : "alert-div-success";
+
     return (
         <div className="container-alert">
-            <div className="alert-div">
-                <span>{message}</span>
+            <div className={alertClassName}>
+                <span className="text-alert">{message}</span>
             </div>
         </div>
     );
