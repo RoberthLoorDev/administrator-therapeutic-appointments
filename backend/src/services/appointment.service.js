@@ -60,16 +60,14 @@ exports.deteleAppointmentForId = async (appointmentId) => {
 
 //verification appointment date
 exports.checkAppointmentAvailability = async (appointmentDate) => {
-    const appointment = await AppointmentModel.findOne({
+    const appointments = await AppointmentModel.find({
         month: appointmentDate.month,
         monthDay: appointmentDate.monthDay,
-        weekDay: appointmentDate.weekDay,
-        hour: appointmentDate.hour,
     });
 
-    if (appointment) throw new Error("Horario no disponible: Por favor, elija otro horario");
+    const hoursNotAvaliables = appointments.map((appointment) => appointment.hour.split(" "));
 
-    return appointment;
+    return hoursNotAvaliables;
 };
 
 const sendMailToAdmin = async (appointmentCreated, userCreation) => {
