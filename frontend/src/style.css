@@ -293,21 +293,57 @@ b {
 }
 
 /*CREATE APPOINTMENTS*/
-.buttons-create-appointment {
+/*Select day and hour*/
+
+.day-selected {
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    background-color: rgba(0, 255, 38, 0.444);
+    height: 4rem;
+}
+
+.radio-create-appointment {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 2rem;
 }
 
-.button-create-appointment {
-    width: 17rem;
-    margin: 0.3rem;
-    background-color: #dddddd;
-    color: #505052;
-    font-weight: 400;
+.radio-days {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 47%;
 }
 
+.label-options {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    height: 3rem;
+    padding-left: 1rem;
+}
+
+.input-radio{
+    margin-right: 0.7rem;
+}
+
+.label-options:hover {
+    transition: 200ms;
+    background-color: #2f3c7532;
+    border-radius: 5px;
+}
+
+.radio-hours {
+    flex-basis: 47%;
+}
+
+.span-day-selected {
+    font-size: 2rem;
+    color: rgb(88, 88, 88);
+    font-weight: 500;
+}
+
+/**/
 .button-create-appointment:hover {
     transition: 200ms;
     background-color: #c4c4c4;
