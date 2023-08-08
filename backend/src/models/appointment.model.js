@@ -8,20 +8,10 @@ const appointmentSchema = new Schema(
             required: true,
             trim: true,
         },
-        monthDay: {
-            type: String,
-            required: true,
-            trim: true,
-        },
-        weekDay: {
-            type: String,
-            required: true,
-            trim: true,
-        },
-        month: {
-            type: String,
-            required: true,
-            trim: true,
+
+        date: {
+            type: Date,
+            required: new Date(),
         },
         hour: {
             type: String,

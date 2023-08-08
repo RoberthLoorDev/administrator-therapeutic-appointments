@@ -17,9 +17,7 @@ exports.createAppointment = async (appointmentBody) => {
 
     const newAppointment = new AppointmentModel({
         userIdentification: appointmentBody.userIdentification,
-        monthDay: appointmentBody.monthDay,
-        weekDay: appointmentBody.weekDay,
-        month: appointmentBody.month,
+        date: appointmentBody.date,
         hour: appointmentBody.hour,
         typeTherapy: appointmentBody.typeTherapy,
         receivedTherapyBefore: appointmentBody.receivedTherapyBefore,
@@ -71,6 +69,23 @@ exports.checkAppointmentAvailability = async (appointmentDate) => {
 };
 
 const sendMailToAdmin = async (appointmentCreated, userCreation) => {
+    //extract week day from date appointment
+    const dateEntered = new Date(appointmentCreated.date);
+
+    //month day
+    const day = dateEntered.getDate() + 1;
+
+    //week day
+    const weekDaysArray = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    const weekDay = weekDaysArray[dateEntered.getDay()];
+
+    //months
+    const monthsArray = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const month = monthsArray[dateEntered.getMonth()];
+
+    //year
+    const year = dateEntered.getFullYear();
+
     const transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
@@ -82,16 +97,16 @@ const sendMailToAdmin = async (appointmentCreated, userCreation) => {
     const mailOptions = {
         from: Config.GmailUser,
         to: Config.GmailReciver,
-        subject: `CITA CREADA: Fecha: ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month} - Hora: ${appointmentCreated.hour}`,
+        subject: `CITA CREADA: Fecha: ${weekDay}, ${day} de ${month} del ${year} - Hora: ${appointmentCreated.hour}`,
         text: `Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.
-                Fecha: ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month}
+                Fecha: ${weekDay}, ${day} de ${month} del ${year}
                 Hora: ${appointmentCreated.hour}
                 Tipo de terapia: ${appointmentCreated.typeTherapy}
                 Recibió terapia previamente: ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}
                 Método de pago esperado: ${appointmentCreated.expectedPaymentMethod}
                 Motivo de consulta: ${appointmentCreated.reasonForConsultation}`,
         html: `<p>Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.</p>
-                <p><strong>Fecha:</strong> ${appointmentCreated.monthDay} (${appointmentCreated.weekDay}), ${appointmentCreated.month}</p>
+                <p><strong>Fecha:</strong> ${weekDay}, ${day} de ${month} del ${year}</p>
                 <p><strong>Hora:</strong> ${appointmentCreated.hour}</p>
                 <p><strong>Tipo de terapia:</strong> ${appointmentCreated.typeTherapy}</p>
                 <p><strong>Recibió terapia previamente:</strong> ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}</p>
