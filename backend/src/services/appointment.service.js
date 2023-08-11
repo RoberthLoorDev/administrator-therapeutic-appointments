@@ -58,14 +58,31 @@ exports.deteleAppointmentForId = async (appointmentId) => {
 
 //verification appointment date
 exports.checkAppointmentAvailability = async (appointmentDate) => {
+    const providedDate = new Date(appointmentDate.date);
+    const startDate = new Date(providedDate.getFullYear(), providedDate.getMonth(), providedDate.getDate() + 1);
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 1);
+
     const appointments = await AppointmentModel.find({
-        month: appointmentDate.month,
-        monthDay: appointmentDate.monthDay,
+        date: {
+            $gte: startDate,
+            $lt: endDate,
+        },
     });
 
-    const hoursNotAvaliables = appointments.map((appointment) => appointment.hour.split(" "));
+    const hoursNotAvailable = appointments.flatMap((appointment) => appointment.hour.split(" "));
 
-    return hoursNotAvaliables;
+    return hoursNotAvailable;
+};
+
+exports.getAppointmentForId = async (appointmentId) => {
+    const appointment = await AppointmentModel.findById(appointmentId);
+
+    if (!appointment) {
+        throw new Error("No existe cita con este ID");
+    }
+
+    return appointment;
 };
 
 const sendMailToAdmin = async (appointmentCreated, userCreation) => {
