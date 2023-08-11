@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { format } from "date-fns"; //format date in text
+import { es } from "date-fns/locale"; //format date in text
+
 import PatientsData from "../components/PatientsData";
 import AlertComponent from "../components/AlertComponent";
 
@@ -17,12 +20,15 @@ function CheckAppointment() {
             const response = await axios.get(`http://localhost:5000/api/appointments/consult/${userIdentification}`);
             const { data } = response;
 
+            const date = new Date(data.data.appointment.date); //format date
+            const formattedDate = format(date, "dd 'de' MMMM 'del' yyyy", { locale: es });
+
             const selectedData = {
                 id: `${data.data.appointment._id}`,
                 names: `${data.data.userData.names} ${data.data.userData.lastnames}`,
                 userIdentification: data.data.userData.identification,
                 typeTherapy: data.data.appointment.typeTherapy,
-                day: `${data.data.appointment.weekDay} ${data.data.appointment.monthDay} de ${data.data.appointment.month} del 2023 `,
+                day: formattedDate,
                 hour: data.data.appointment.hour,
                 reasonForConsultation: data.data.appointment.reasonForConsultation,
             };
