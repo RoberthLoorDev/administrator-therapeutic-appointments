@@ -50,3 +50,15 @@ exports.checkAppointmentAvailability = async (req, res) => {
         // handleError(res, error);
     }
 };
+
+exports.getAppointmentForId = async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    try {
+        const appointmentId = req.params.id;
+        const appointment = await AppointmentService.getAppointmentForId(appointmentId);
+        return handleSucces(res, appointment, "Cita encontrada");
+    } catch (error) {
+        console.log(error);
+        handleNotFound(res, "No hay ninguna cita con ese ID");
+    }
+};
