@@ -78,11 +78,15 @@ exports.checkAppointmentAvailability = async (appointmentDate) => {
 exports.getAppointmentForId = async (appointmentId) => {
     const appointment = await AppointmentModel.findById(appointmentId);
 
+    const userId = appointment.userIdentification;
+    const user = await UserService.consultUserForIdentification(userId);
+    // console.log(user);
+
     if (!appointment) {
         throw new Error("No existe cita con este ID");
     }
 
-    return appointment;
+    return { appointment, user };
 };
 
 const sendMailToAdmin = async (appointmentCreated, userCreation) => {

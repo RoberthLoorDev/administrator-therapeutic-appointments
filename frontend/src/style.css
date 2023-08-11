@@ -163,10 +163,11 @@ form {
 }
 
 label {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: #505052;
     margin: 0.5rem 0;
+    width: 20rem;
 }
 
 input,
@@ -178,8 +179,18 @@ button {
 input[type="text"] {
     background-color: #eeeeee;
     outline: none;
-    height: 4rem;
-    width: 25rem;
+    height: 3rem;
+    width: 20rem;
+    text-indent: 1rem;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+input[type="number"] {
+    background-color: #eeeeee;
+    outline: none;
+    height: 3rem;
+    width: 20rem;
     text-indent: 1rem;
     font-size: 1.5rem;
     margin-right: 1.5rem;
@@ -295,114 +306,11 @@ b {
 /*CREATE APPOINTMENTS*/
 /*Select day and hour*/
 
-.day-selected {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 255, 38, 0.444);
-    height: 4rem;
-}
-
-.radio-create-appointment {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-}
-
-.radio-days {
+.form-create-appointment {
     display: flex;
     flex-direction: column;
-    flex-basis: 47%;
 }
 
-.label-options {
-    display: flex;
-    align-items: center;
-    font-weight: 400;
-    height: 3rem;
-    padding-left: 1rem;
-}
-
-.input-radio{
-    margin-right: 0.7rem;
-}
-
-.label-options:hover {
-    transition: 200ms;
-    background-color: #2f3c7532;
-    border-radius: 5px;
-}
-
-.radio-hours {
-    flex-basis: 47%;
-}
-
-.span-day-selected {
-    font-size: 2rem;
-    color: rgb(88, 88, 88);
-    font-weight: 500;
-}
-
-/**/
-.button-create-appointment:hover {
-    transition: 200ms;
-    background-color: #c4c4c4;
-}
-
-.button-create-appointment:active {
-    background-color: #c4c4c4;
-}
-
-.data-user-appointment {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.label-input-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-}
-
-.h3-create-appointment {
-    font-size: 1.8rem;
-    color: #505052;
-}
-
-.label-create-appointment {
-    margin-bottom: 0;
-}
-
-.input-create-appointment {
-    letter-spacing: 0;
-}
-
-input[type="number"] {
-    max-width: 6rem;
-    background-color: #eeeeee;
-    outline: none;
-    height: 4rem;
-    width: 25rem;
-    text-indent: 1rem;
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-}
-
-.textarea-create-appointment {
-    background-color: #eeeeee;
-    border: none;
-    min-width: 100%;
-    min-height: 10rem;
-    outline: none;
-    text-indent: 1rem;
-    font-size: 1.5rem;
-    font-family: "Poppins", sans-serif;
-    color: black;
-    padding-top: 1rem;
-    resize: none;
-}
-
-.label-textarea-container {
-    width: 100%;
-    margin-bottom: 2rem;
+.button-create-appointment {
+    background-color: rgb(192, 192, 192);
 }
