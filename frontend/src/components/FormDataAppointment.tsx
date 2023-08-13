@@ -21,14 +21,20 @@ function FormDataAppointment() {
         reasonForConsultation: "",
     });
 
+    //dejar seleccionado el dia y la hora
+    const [selectedDayIndex, setSelectedDayIndex] = useState(-1);
+    const [selectedHourIndex, setSelectedHourIndex] = useState(-1);
+
+    //
     const formatDate = (date: Date) => {
         const options: Intl.DateTimeFormatOptions = {
             weekday: "long",
-            year: "numeric",
+            // year: "numeric",
             month: "long",
             day: "numeric",
         };
-        return date.toLocaleDateString("es-ES", options);
+        const formattedDate = date.toLocaleDateString("es-ES", options);
+        return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
     };
 
     const generateNext7Days = () => {
@@ -45,7 +51,9 @@ function FormDataAppointment() {
         return days;
     };
 
-    const handleDateChange = async (dateValue: string) => {
+    const handleDateChange = async (dateValue: string, index: number) => {
+        setSelectedDayIndex(index);
+
         const initialAvaliableHours = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
         setSelectedDate(dateValue);
 
@@ -70,8 +78,9 @@ function FormDataAppointment() {
         }
     };
 
-    const handleHourSelection = (hour: string) => {
+    const handleHourSelection = (hour: string, index: number) => {
         setSelectedHour(hour);
+        setSelectedHourIndex(index);
     };
 
     const handleFormSubmit = async (event: React.FormEvent) => {
@@ -114,66 +123,97 @@ function FormDataAppointment() {
 
     return (
         <div>
-            <h2>Llene los datos</h2>
+            <h3 className="h3-title-form">Llene los siguientes datos</h3>
             <form className="form-create-appointment" onSubmit={handleFormSubmit}>
-                {next7Days.map((date, index) => (
-                    <button className="button-create-appointment" type="button" key={index} onClick={() => handleDateChange(date.toISOString())}>
-                        {formatDate(date)}
-                    </button>
-                ))}
+                <label>Elija el día de la cita</label>
+                <div className="choose-day-hours">
+                    {next7Days.map((date, index) => (
+                        <button className={`button-create-appointment ${selectedDayIndex === index ? "selected-button" : ""}`} type="button" key={index} onClick={() => handleDateChange(date.toISOString(), index)}>
+                            {formatDate(date)}
+                        </button>
+                    ))}
+                </div>
 
                 {/* Mostrar botones de horas disponibles */}
                 {avaliableHours.length > 0 && (
                     <div>
-                        <p>Horas disponibles:</p>
-                        {avaliableHours.map((hour, index) => (
-                            <button
-                                className={`button-create-appointment`}
-                                type="button"
-                                key={index}
-                                onClick={() => {
-                                    handleHourSelection(hour);
-                                }}
-                            >
-                                {hour}
-                            </button>
-                        ))}
+                        <label>Horas disponibles:</label>
+                        <div className="choose-day-hours">
+                            {avaliableHours.map((hour, index) => (
+                                <button
+                                    className={`button-create-appointment ${selectedHourIndex === index ? "selected-button" : ""}`}
+                                    type="button"
+                                    key={index}
+                                    onClick={() => {
+                                        handleHourSelection(hour, index);
+                                    }}
+                                >
+                                    {hour}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 )}
-                <label>Nombres</label>
-                <input type="text" name="names" value={formData.names} onChange={handleInputChange} required />
 
-                <label>Apellidos</label>
-                <input type="text" name="lastnames" value={formData.lastnames} onChange={handleInputChange} required />
+                <div className="form-inputs">
+                    <div className="label-input">
+                        <label>Nombres</label>
+                        <input type="text" name="names" value={formData.names} onChange={handleInputChange} required />
+                    </div>
 
-                <label>Email</label>
-                <input type="text" name="email" value={formData.email} onChange={handleInputChange} />
+                    <div className="label-input">
+                        <label>Apellidos</label>
+                        <input type="text" name="lastnames" value={formData.lastnames} onChange={handleInputChange} required />
+                    </div>
 
-                <label>Edad</label>
-                <input type="number" name="age" value={formData.age} onChange={handleInputChange} required />
+                    <div className="label-input">
+                        <label>Email</label>
+                        <input type="text" name="email" value={formData.email} onChange={handleInputChange} />
+                    </div>
 
-                <label>Cédula</label>
-                <input type="text" name="identification" maxLength={10} minLength={10} value={formData.identification} onChange={handleInputChange} required />
+                    <div className="label-input">
+                        <label>Edad</label>
+                        <input type="number" name="age" value={formData.age} onChange={handleInputChange} required />
+                    </div>
 
-                <label>Sexo</label>
-                <input type="text" name="gender" value={formData.gender} onChange={handleInputChange} />
+                    <div className="label-input">
+                        <label>Cédula</label>
+                        <input type="text" name="identification" maxLength={10} minLength={10} value={formData.identification} onChange={handleInputChange} required />
+                    </div>
 
-                <label>Tipo de terapia (Opcional)</label>
-                <input type="text" name="typeTherapy" value={formData.typeTherapy} onChange={handleInputChange} />
+                    <div className="label-input">
+                        <label>Sexo</label>
+                        <input type="text" name="gender" value={formData.gender} onChange={handleInputChange} />
+                    </div>
 
-                <label>¿Ha recibido terapia anteriormente? </label>
-                <input type="checkbox" name="receivedTherapyBefore" checked={formData.receivedTherapyBefore} onChange={handleInputChange} required />
+                    <div className="label-input">
+                        <label>Tipo de terapia (Opcional)</label>
+                        <input type="text" name="typeTherapy" value={formData.typeTherapy} onChange={handleInputChange} />
+                    </div>
 
-                <label>Forma de pago esperada</label>
-                <input type="text" name="expectedPaymentMethod" value={formData.expectedPaymentMethod} onChange={handleInputChange} />
+                    <div className="label-input">
+                        <label>Seleccione: ¿Ha recibido terapia anteriormente? </label>
+                        <input type="checkbox" name="receivedTherapyBefore" checked={formData.receivedTherapyBefore} onChange={handleInputChange} required />
+                    </div>
 
-                <label>Motivo de la consulta </label>
-                <input required type="text" name="reasonForConsultation" value={formData.reasonForConsultation} onChange={handleInputChange} />
-                <input type="submit" value="Enviar" />
+                    <div className="label-input">
+                        <label>Forma de pago esperada</label>
+                        <input type="text" name="expectedPaymentMethod" value={formData.expectedPaymentMethod} onChange={handleInputChange} />
+                    </div>
 
-                <Link to="/">
-                    <button type="button">Salir</button>
-                </Link>
+                    <div className="label-input">
+                        <label>Motivo de la consulta </label>
+                        <input required type="text" name="reasonForConsultation" value={formData.reasonForConsultation} onChange={handleInputChange} />
+                    </div>
+                </div>
+                <div className="label-input"></div>
+
+                <div className="buttons-exit-create">
+                    <input type="submit" value="Enviar" className="input-submit" />
+                    <Link to="/">
+                        <button type="button">Salir</button>
+                    </Link>
+                </div>
             </form>
         </div>
     );
