@@ -55,12 +55,15 @@ function FormDataAppointment() {
         setSelectedDayIndex(index);
 
         const initialAvaliableHours = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
-        setSelectedDate(dateValue);
 
         const selectedDateFormat = new Date(dateValue);
-        selectedDateFormat.setUTCHours(0, 0, 0, 0); // Ajustar a las 00:00:00 UTC
 
-        const formattedDate = selectedDateFormat.toISOString();
+        const formattedDate = `${selectedDateFormat.getFullYear()}-${String(selectedDateFormat.getMonth() + 1).padStart(2, "0")}-${String(selectedDateFormat.getDate()).padStart(2, "0")}`;
+
+        setSelectedDate(formattedDate);
+        console.log(formattedDate);
+
+        // const formattedDate = selectedDateFormat.toISOString();
 
         try {
             const response = await axios.post("http://localhost:5000/api/appointments/check/appointment", {
@@ -68,11 +71,11 @@ function FormDataAppointment() {
             });
 
             const responseData = response.data.data;
+
             const hoursWithoutAppointment = initialAvaliableHours.filter((hour) => !responseData.includes(hour));
 
             setAvaliableHours(hoursWithoutAppointment);
-
-            // console.log(formattedDate);
+            console.log(avaliableHours);
         } catch (error) {
             console.error("Error al obtener horarios disponibles:", error);
         }
@@ -97,9 +100,11 @@ function FormDataAppointment() {
             const response = await axios.post("http://localhost:5000/api/appointments/create", appointmentData);
             const createdAppointmentId = response.data.data.appointmentCreated._id;
 
+            console.log(response);
+
             // console.log("Cita creada:", response.data);
             // Redireccionar a la página de created-appointment con el ID de cita
-            window.location.href = `/created-appointment?id=${createdAppointmentId}`;
+            // window.location.href = `/created-appointment?id=${createdAppointmentId}`;
 
             // console.log("Appointment created:", response.data);
         } catch (error) {
@@ -107,11 +112,22 @@ function FormDataAppointment() {
         }
     };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type, checked } = event.target;
+    const toBooleanFromSelect = (value: string) => {
+        console.log(value);
+        const selectResult = value === "true" ? true : false;
+        setFormData({
+            ...formData,
+            receivedTherapyBefore: selectResult,
+        });
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
+        const { name, value } = event.target;
 
         // Para campos de tipo checkbox, el valor será 'on' o 'off'. Utiliza el estado 'checked' para obtener un booleano.
-        const inputValue = type === "checkbox" ? checked : value;
+        const inputValue = name === "receivedTherapyBefore" ? value === "true" : value;
+
+        console.log(inputValue);
 
         setFormData((prevData) => ({
             ...prevData,
@@ -135,7 +151,7 @@ function FormDataAppointment() {
                 </div>
 
                 {/* Mostrar botones de horas disponibles */}
-                {avaliableHours.length > 0 && (
+                {avaliableHours.length > 0 ? (
                     <div>
                         <label>Horas disponibles:</label>
                         <div className="choose-day-hours">
@@ -153,6 +169,8 @@ function FormDataAppointment() {
                             ))}
                         </div>
                     </div>
+                ) : (
+                    <AlertComponent isError={true} message="Día sin horas disponibles, elija otro día"></AlertComponent>
                 )}
 
                 <div className="form-inputs">
@@ -173,7 +191,7 @@ function FormDataAppointment() {
 
                     <div className="label-input">
                         <label>Edad</label>
-                        <input type="number" name="age" value={formData.age} onChange={handleInputChange} required />
+                        <input type="number" className="input-number-create-appointment" name="age" value={formData.age} onChange={handleInputChange} required />
                     </div>
 
                     <div className="label-input">
@@ -182,8 +200,12 @@ function FormDataAppointment() {
                     </div>
 
                     <div className="label-input">
-                        <label>Sexo</label>
-                        <input type="text" name="gender" value={formData.gender} onChange={handleInputChange} />
+                        <label>Género</label>
+                        <select name="gender" className="select-create-appointment" value={formData.gender} onChange={handleInputChange}>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Otro...">Otro...</option>
+                        </select>
                     </div>
 
                     <div className="label-input">
@@ -192,8 +214,18 @@ function FormDataAppointment() {
                     </div>
 
                     <div className="label-input">
-                        <label>Seleccione: ¿Ha recibido terapia anteriormente? </label>
-                        <input type="checkbox" name="receivedTherapyBefore" checked={formData.receivedTherapyBefore} onChange={handleInputChange} required />
+                        <label>¿Ha recibido terapia anteriormente? </label>
+                        <select
+                            name="receivedTherapyBefore"
+                            onChange={(event) => {
+                                const newValue = event.target.value;
+                                toBooleanFromSelect(newValue);
+                            }}
+                            className="select-create-appointment"
+                        >
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                        </select>
                     </div>
 
                     <div className="label-input">
@@ -209,7 +241,7 @@ function FormDataAppointment() {
                 <div className="label-input"></div>
 
                 <div className="buttons-exit-create">
-                    <input type="submit" value="Enviar" className="input-submit" />
+                    <input type="submit" value="Crear cita" className="input-submit" />
                     <Link to="/">
                         <button type="button">Salir</button>
                     </Link>

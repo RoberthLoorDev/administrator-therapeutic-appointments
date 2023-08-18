@@ -203,7 +203,7 @@ button {
     background-color: #677ee1;
     color: white;
     height: 4rem;
-    width: 12rem;
+    width: 14rem;
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -214,8 +214,7 @@ button:hover {
     background-color: #536cd8;
     cursor: pointer;
 }
-.input-submit:active,
-button:hover {
+.input-submit:active {
     transition: 200ms;
     background-color: #314dca;
     cursor: pointer;
@@ -312,7 +311,7 @@ b {
 .h3-title-form {
     font-size: 2rem;
     color: #505052;
-    margin-top: -.5rem;
+    margin-top: -0.5rem;
 }
 
 .form-create-appointment {
@@ -334,7 +333,7 @@ b {
 }
 
 .selected-button {
-    background-color: #314dca;
+    background-color: #2945c2;
 }
 
 .form-inputs {
@@ -352,6 +351,22 @@ b {
 
 .label-input input[type="text"] {
     width: 90%;
+}
+
+.input-number-create-appointment {
+    width: 7rem !important;
+}
+
+.select-create-appointment {
+    background-color: #eeeeee;
+    outline: none;
+    height: 3.7rem;
+    width: 90%;
+    text-indent: 1rem;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+    border: none;
+    border-radius: 5px;
 }
 
 .label-input label {
