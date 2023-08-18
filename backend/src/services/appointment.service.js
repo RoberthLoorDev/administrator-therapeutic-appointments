@@ -59,7 +59,7 @@ exports.deteleAppointmentForId = async (appointmentId) => {
 //verification appointment date
 exports.checkAppointmentAvailability = async (appointmentDate) => {
     const providedDate = new Date(appointmentDate.date);
-    const startDate = new Date(providedDate.getFullYear(), providedDate.getMonth(), providedDate.getDate() + 1);
+    const startDate = new Date(providedDate.getFullYear(), providedDate.getMonth(), providedDate.getDate());
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() + 1);
 
