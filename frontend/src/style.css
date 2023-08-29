@@ -13,7 +13,9 @@ body {
 
     flex-direction: column;
     font-family: "Poppins", sans-serif;
-    background-color: #ddddddb9;
+    background-image: repeating-linear-gradient(45deg, #ffffff73 0, #ffffff77 1.5px, transparent 0, transparent 50%);
+    background-size: 85px 85px;
+    background-color: rgb(184, 184, 184);
 }
 
 h1,
@@ -51,28 +53,14 @@ span {
 
 /*HEADER*/
 
-.image-header {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-}
-
-.image-header img {
-    height: 100vh;
-    width: 100vw;
-    opacity: 30%;
-    object-fit: cover;
-}
-
 .text-image-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 10rem;
+    max-height: 89vh;
+    min-height: 89vh;
+    margin-top: -10rem;
 }
 
 .span-title-header {
@@ -80,7 +68,7 @@ span {
     font-size: 5.5rem;
     text-transform: uppercase;
     font-weight: 700;
-    text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.479);
+    text-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.199);
     text-align: center;
 }
 
@@ -88,7 +76,7 @@ span {
     color: white;
     font-weight: 300;
     font-size: 3rem;
-    text-shadow: 0.5rem 0.5rem 1rem rgb(0, 0, 0);
+    text-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.233);
     text-transform: uppercase;
     margin-top: -1.5rem;
 }
@@ -99,13 +87,11 @@ span {
     color: white;
     font-size: 1.8rem;
     font-weight: 600;
-    letter-spacing: 1px;
     height: 5rem;
     width: 20rem;
     margin-left: 1rem;
     border-radius: 5px;
     margin-top: 1rem;
-    box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.329);
     user-select: none;
 }
 
@@ -307,6 +293,12 @@ b {
 
 /*CREATE APPOINTMENTS*/
 /*Select day and hour*/
+
+.day-appointment {
+    margin-top: 2rem;
+    font-size: 2rem;
+    text-align: center;
+}
 
 .h3-title-form {
     font-size: 2rem;

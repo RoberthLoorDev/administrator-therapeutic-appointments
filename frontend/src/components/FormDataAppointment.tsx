@@ -172,6 +172,19 @@ function FormDataAppointment() {
                 ) : (
                     <AlertComponent isError={true} message="Día sin horas disponibles, elija otro día"></AlertComponent>
                 )}
+                <div className="day-appointment">
+                    <p>
+                        {selectedDate ? (
+                            <>
+                                {formatDate(new Date(selectedDate))}
+                                <br />
+                                {selectedHour}
+                            </>
+                        ) : (
+                            "Fecha no seleccionada"
+                        )}
+                    </p>
+                </div>
 
                 <div className="form-inputs">
                     <div className="label-input">
