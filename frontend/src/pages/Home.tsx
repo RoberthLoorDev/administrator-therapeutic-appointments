@@ -8,7 +8,7 @@ function Home() {
     return (
         <>
             <NabvarComponent></NabvarComponent>
-            <section className="header-section-home home-container ">
+            <section className="header-section-home home-container">
                 <div className="h1-buttons">
                     <h1 className="h1-header-home">
                         Cree y consulte su cita desde <br /> <span className="purple-text"> su hogar </span>
