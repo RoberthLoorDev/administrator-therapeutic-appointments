@@ -3,13 +3,18 @@ import images from "../assets/img/images";
 function NabvarComponent() {
     return (
         <>
-            <section className="navbar-container">
-                <img src={images.page_logo} alt="logo" className="image-logo" />
-                <span>Toainga Sitio Web</span>
-                <span>Sobre mí</span>
-                <span>Iniciar sesión</span>
-                <span></span>
-            </section>
+            <div className="home-container">
+                <section className="navbar-section">
+                    <div className="logo-title">
+                        <img src={images.image_logo} alt="logo" className="image-logo" />
+                        <span>CONSULTORIO TOAINGA</span>
+                    </div>
+                    <div className="options-navbar">
+                        <span className="text-light">Sobre mí</span>
+                        <span className="text-light text-underline">Iniciar sesión</span>
+                    </div>
+                </section>
+            </div>
         </>
     );
 }

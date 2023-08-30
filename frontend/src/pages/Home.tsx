@@ -1,8 +1,5 @@
-//images
-import images from "../assets/img/images";
-import AlertComponent from "../components/AlertComponent";
-
 //components
+import images from "../assets/img/images";
 import NabvarComponent from "../components/NabvarComponent";
 
 import { Link } from "react-router-dom";
@@ -11,20 +8,30 @@ function Home() {
     return (
         <>
             <NabvarComponent></NabvarComponent>
-            <div className="text-image-header">
-                <span className="span-title-header">Terapia ocupacional</span>
-                <h1 className="h1-title-header">Licenciado Carlos Toainga</h1>
-                <div className="buttons-header">
-                    <Link to="/consultar-cita">
-                        <button className="button-header">Consultar cita</button>
-                    </Link>
-                    <Link to="/crear-cita">
-                        <button className="button-header">Crear cita</button>
-                    </Link>
-                </div>
-            </div>
+            <section className="header-section-home home-container ">
+                <div className="h1-buttons">
+                    <h1 className="h1-header-home">
+                        Cree y consulte su cita desde <br /> <span className="purple-text"> su hogar </span>
+                    </h1>
 
-            <section className="form-create-appointment"></section>
+                    <div className="header-home-buttons">
+                        <Link to={"/crear-cita"} className="no-underline">
+                            <button className="home-button">
+                                <img className="image-buttons" src={images.icon_create_appointment} alt="" />
+                                Crear cita
+                            </button>
+                        </Link>
+                        <Link to={"consultar-cita"} className="no-underline">
+                            <button className="home-button">
+                                <img className="image-buttons" src={images.icon_search} alt="" />
+                                Consultar cita
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+
+                <img src={images.image_header_home} alt="image-header" />
+            </section>
         </>
     );
 }

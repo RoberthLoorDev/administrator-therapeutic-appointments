@@ -13,9 +13,6 @@ body {
 
     flex-direction: column;
     font-family: "Poppins", sans-serif;
-    background-image: repeating-linear-gradient(45deg, #ffffff73 0, #ffffff77 1.5px, transparent 0, transparent 50%);
-    background-size: 85px 85px;
-    background-color: rgb(184, 184, 184);
 }
 
 h1,
@@ -29,346 +26,116 @@ span {
     margin: 0;
 }
 
-/*NABVAR*/
+/*Common Styles*/
+.text-light {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
 
-.navbar-container {
+.text-underline {
+    text-decoration: underline;
+}
+.no-underline {
+    text-decoration: none;
+}
+
+.home-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 7rem;
-    background-color: white;
-}
-
-.image-logo {
-    height: auto;
-    width: 4rem;
-}
-
-.title-nabvar {
-    font-size: 2rem;
-    text-transform: uppercase;
-    font-weight: 300;
-    margin-left: 2rem;
-}
-
-/*HEADER*/
-
-.text-image-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 89vh;
-    min-height: 89vh;
-    margin-top: -10rem;
-}
-
-.span-title-header {
+    background-color: #5956c2;
     color: white;
-    font-size: 5.5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    text-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.199);
-    text-align: center;
-}
-
-.h1-title-header {
-    color: white;
-    font-weight: 300;
-    font-size: 3rem;
-    text-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.233);
-    text-transform: uppercase;
-    margin-top: -1.5rem;
-}
-
-.button-header {
-    background-color: #677ee1;
-    border: none;
-    color: white;
-    font-size: 1.8rem;
-    font-weight: 600;
-    height: 5rem;
     width: 20rem;
-    margin-left: 1rem;
-    border-radius: 5px;
-    margin-top: 1rem;
+    height: 4.7rem;
+    border: none;
+    border-radius: 3rem;
+    font-weight: 600;
+    font-size: 1.8rem;
     user-select: none;
 }
 
-.button-header:hover {
+.home-button:hover {
+    transform: scale(1.05);
     cursor: pointer;
+    background-color: #716ec2;
     transition: 200ms;
-    background-color: #4455a1;
 }
 
-.button-header:active {
-    background-color: #2f3c75;
+.home-button:active {
+    background-color: #4a46c2;
 }
 
-/*CREATE APPOINTMENT FORM*/
-.global-container {
+/*------ HOME PAGE*/
+.home-container {
+    margin: 0 14rem;
+}
+
+.navbar-section {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 90%;
-    width: 100%;
-}
-
-.form-contact-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70rem;
-    height: auto;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 5rem;
-    margin-bottom: 4rem;
-}
-
-.margin-container-form-contact {
-    height: 80%;
-    width: 90%;
-    padding: 3rem 0;
-}
-
-.h2-page-title {
-    text-transform: uppercase;
-    font-size: 4.5rem;
-    color: #505052;
-    line-height: 4.5rem;
-}
-
-.containe-check-appointment {
-    display: flex;
-    flex-direction: column;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #505052;
-    width: 100%;
-    margin-top: 1.5rem;
-}
-
-input,
-button {
-    border: none;
-    border-radius: 4px;
-}
-
-input[type="text"] {
-    background-color: #eeeeee;
-    outline: none;
-    height: 3.5rem;
-    width: 20rem;
-    text-indent: 1rem;
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-}
-
-input[type="number"] {
-    background-color: #eeeeee;
-    outline: none;
-    height: 3rem;
-    width: 20rem;
-    text-indent: 1rem;
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-}
-
-input[type="submit"],
-button {
-    background-color: #677ee1;
-    color: white;
-    height: 4rem;
-    width: 14rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.input-submit:hover,
-button:hover {
-    transition: 200ms;
-    background-color: #536cd8;
-    cursor: pointer;
-}
-.input-submit:active {
-    transition: 200ms;
-    background-color: #314dca;
-    cursor: pointer;
-}
-
-.buttons-exit-eliminate {
-    display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
+    height: 8rem;
 }
 
-.eliminate-appointment-button {
-    background-color: #ca0a0a;
+.image-logo {
+    width: 4.5rem;
+    height: 4.5rem;
 }
 
-.eliminate-appointment-button:hover {
-    transition: 200ms;
-    background-color: rgb(150, 19, 19);
-}
-
-.eliminate-appointment-button:active {
-    background-color: rgb(124, 19, 19);
-}
-
-/*ALERT*/
-
-.container-alert {
-    width: 100%;
+.logo-title {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 2rem 0;
+    user-select: none;
 }
-
-.alert-div-error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 5rem;
-    border-radius: 4px;
-    background-color: rgb(255, 72, 72);
-    /* outline: 10px solid rgb(255, 154, 154); */
-}
-
-.alert-div-success {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 5rem;
-    border-radius: 4px;
-    background-color: rgb(7, 218, 0);
-}
-
-.text-alert {
+.logo-title span {
     font-size: 2rem;
-    font-weight: 700;
-    color: white;
-    text-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.678);
+    color: #5956c2;
+    font-weight: 600;
+    margin-left: 1rem;
 }
 
-.container-data {
+.options-navbar span {
+    margin-right: 5rem;
+    user-select: none;
+
+}
+
+.options-navbar span:hover {
+    cursor: pointer;
+}
+
+.options-navbar :last-child {
+    margin-right: 0;
+}
+
+.header-section-home {
     display: flex;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #f4f4f4;
-    width: 100%;
-    height: 20rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 5px;
 }
-
-.margin-container-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 95%;
-    height: 80%;
-}
-
-.margin-container-data span {
-    font-size: 1.5rem;
-}
-
-b {
-    color: #505052;
-}
-
-/*CREATE APPOINTMENTS*/
-/*Select day and hour*/
-
-.day-appointment {
-    margin-top: 2rem;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.h3-title-form {
-    font-size: 2rem;
-    color: #505052;
-    margin-top: -0.5rem;
-}
-
-.form-create-appointment {
-    display: flex;
-    flex-direction: column;
-}
-
-.button-create-appointment {
-    background-color: rgb(206, 206, 206);
-    width: 31.5%;
-    margin: 0.5rem;
-}
-
-.choose-day-hours {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: start;
-}
-
-.selected-button {
-    background-color: #2945c2;
-}
-
-.form-inputs {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.label-input {
-    display: flex;
-    flex-direction: column;
+.header-section-home img {
     width: 50%;
 }
 
-.label-input input[type="text"] {
-    width: 90%;
+.h1-header-home {
+    font-size: 6rem;
+    line-height: 7rem;
 }
 
-.input-number-create-appointment {
-    width: 7rem !important;
+.purple-text {
+    color: #5956c2;
 }
 
-.select-create-appointment {
-    background-color: #eeeeee;
-    outline: none;
-    height: 3.7rem;
-    width: 90%;
-    text-indent: 1rem;
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-    border: none;
-    border-radius: 5px;
+.image-buttons {
+    max-width: 2rem;
+    height: auto;
+    margin-right: 0.8rem;
 }
 
-.label-input label {
-    width: 90%;
-}
-
-.buttons-exit-create {
+.header-home-buttons {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-top: 2rem;
-    height: 10rem;
+    justify-content: space-between;
+    width: 77%;
+    margin-top: 3rem;
 }
