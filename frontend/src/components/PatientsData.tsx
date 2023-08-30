@@ -18,7 +18,7 @@ function PatientsData() {
                 <span>
                     <b>Paciente: </b>
                     <span>Loor Gimenez Roberth</span>
-                </span>{" "}
+                </span>
                 <span>
                     <b>Edad: </b>
                     <span>25</span>
