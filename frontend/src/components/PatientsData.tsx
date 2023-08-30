@@ -11,36 +11,42 @@ interface PatientsDataProps {
     patient: PatientsData;
 }
 
-function PatientsData({ patient }: PatientsDataProps) {
+function PatientsData() {
     return (
         <>
-            <div className="container-data">
-                <div className="margin-container-data">
-                    <span>
-                        <b>Paciente: </b>
-                        {patient.names}
-                    </span>
-                    <span>
-                        <b>Cédula: </b>
-                        {patient.userIdentification}
-                    </span>
-                    <span>
-                        <b>Tipo de terapia: </b>
-                        {patient.typeTherapy}
-                    </span>
-                    <span>
-                        <b>Día: </b>
-                        {patient.day}
-                    </span>
-                    <span>
-                        <b>Hora de cita: </b>
-                        {patient.hour}
-                    </span>
-                    <span>
-                        <b>Motivo de la consulta: </b>
-                        {patient.reasonForConsultation}
-                    </span>
-                </div>
+            <div className="container-data-patient">
+                <span>
+                    <b>Paciente: </b>
+                    <span>Loor Gimenez Roberth</span>
+                </span>{" "}
+                <span>
+                    <b>Edad: </b>
+                    <span>25</span>
+                </span>
+                <span>
+                    <b>Cédula: </b>
+                    <span>Hola</span>
+                </span>
+                <span>
+                    <b>genero: </b>
+                    <span>Masculino</span>
+                </span>
+                <span>
+                    <b>Tipo de terapia: </b>
+                    <span>Tipo de terapia</span>
+                </span>
+                <span>
+                    <b>Día: </b>
+                    <span>23 de agosto del 2023</span>
+                </span>
+                <span>
+                    <b>Hora de cita: </b>
+                    <span>14:00</span>
+                </span>
+                <span>
+                    <b>Motivo de la consulta: </b>
+                    <span>Dolor en la espalda baja</span>
+                </span>
             </div>
         </>
     );
