@@ -29,10 +29,10 @@ span {
 /*Common Styles*/
 
 .global-container {
+    margin-top: 5rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 0 20rem;
+    padding: 0 20rem;
     height: 100vh;
 }
 
@@ -49,32 +49,47 @@ span {
 }
 
 .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 0.4rem;
     color: white;
-    height: 100%;
-    width: 100%;
     font-weight: 600;
 }
 
-.button-container {
-    min-height: 2rem;
-    width: 12rem;
+.action-button {
+    background-color: #5956c2;
+    min-height: 3.5rem;
+    width: 15rem;
 }
 
-.button:hover {
+.action-button:hover {
     transform: scale(1.05);
     cursor: pointer;
     background-color: #716ec2;
     transition: 200ms;
 }
 
-.button:active {
+.action-button:active {
     background-color: #4a46c2;
 }
 
-.action-button {
-    background-color: #5956c2;
+.cancel-button {
+    background-color: #ff5757;
+    min-height: 3.5rem;
+    width: 15rem;
+}
+
+.cancel-button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: #ff7c7c;
+    transition: 200ms;
+}
+
+.cancel-button:active {
+    background-color: #d32020;
 }
 
 .home-button {
@@ -108,11 +123,12 @@ span {
 }
 
 .label-form {
-    width: 100%;
     font-size: 1.5rem;
+    margin-top: 1rem;
 }
 
-.input-text-form-style {
+.input-text-form-style,
+select {
     background-color: #f4f1ff;
     border: none;
     height: 3.5rem;
@@ -121,10 +137,35 @@ span {
     outline-color: #5a56c22f;
     text-indent: 1rem;
     border-radius: 0.4rem;
+    font-size: 1.6rem;
+}
+
+textarea {
+    width: 62rem;
+    resize: none;
+    height: 10rem;
+    border: none;
+    outline-color: #5a56c22f;
+    background-color: #f4f1ff;
+    border-radius: 0.4rem;
+    font-family: "Poppins";
+    padding: 1rem;
+}
+
+.input-number-form-style,
+.way-to-pay {
+    width: 20rem;
+}
+
+.create-appointment-buttons-height {
+    height: 4rem;
+}
+
+.image-flipped-horizontally {
+    transform: scaleX(-1); /* Voltea horizontalmente */
 }
 
 /*----------------*/
-
 /*------ HOME PAGE*/
 .home-container {
     margin: 0 14rem;
@@ -189,7 +230,7 @@ span {
 .image-buttons {
     max-width: 2rem;
     height: auto;
-    margin-right: 0.8rem;
+    padding: 1rem;
 }
 
 .header-home-buttons {
@@ -203,12 +244,17 @@ span {
 .check-appointment-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 80%;
 }
 
 .check-appointment-form {
     display: flex;
+}
+
+.button-leave-check-appointment {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 /*--------------------*/
@@ -220,4 +266,81 @@ span {
     display: flex;
     flex-direction: column;
     font-size: 1.6rem;
+    min-width: 70rem;
+    border-radius: 0.4rem;
+}
+
+/*---------------------*/
+/*----------- CREATE APPOINTMENT*/
+.buttons-date-hour-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.buttons-date-hour-containerL:last-child {
+    margin-bottom: 0;
+}
+
+.button-select-day-hour {
+    background-color: #dbd4ff;
+    height: 5.5rem;
+    width: 20rem;
+    color: #6151c2;
+    border: none;
+    margin: 0.5rem 0.5rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: 500;
+}
+.button-select-day-hour:hover {
+    color: white;
+}
+
+.container-buttons-create-appointment {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.label-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-create-appointment {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.line-horizontal {
+    background-color: #cbcbcbc2;
+    width: 100%;
+    height: 0.2rem;
+    margin-top: 2rem;
+}
+
+.resume-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-resume-appointment-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 9rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.created-appointment-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-buttons-created-appointment {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }

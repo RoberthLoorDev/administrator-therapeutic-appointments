@@ -1,5 +1,6 @@
 import React from "react";
 import PatientsData from "../components/PatientsData";
+import { Link } from "react-router-dom";
 
 const CheckAppointment = () => {
     return (
@@ -13,12 +14,16 @@ const CheckAppointment = () => {
                     <form className="check-appointment-form">
                         <input type="text" className="input-text-form-style" />
 
-                        <div className="button-container">
-                            <input type="submit" className="button action-button" value="Consultar" />
-                        </div>
+                        <input type="submit" className="button action-button" value="Consultar" />
                     </form>
 
                     <PatientsData />
+
+                    <div className="button-leave-check-appointment">
+                        <Link to="/" className="no-underline">
+                            <button className="cancel-button button">Salir</button>
+                        </Link>
+                    </div>
                 </section>
             </div>
         </>

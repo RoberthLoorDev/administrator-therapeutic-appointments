@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import FormDataAppointment from "../components/FormDataAppointment";
+import DateAndTimePickerComponent from "../components/DateAndTimePickerComponent";
+import FormCreateAppointment from "../components/FormCreateAppointment";
+import ResumeAppointment from "../components/ResumeAppointment";
 
 function CreateAppointment() {
     return (
@@ -8,8 +11,10 @@ function CreateAppointment() {
                 <div className="global-container">
                     <div className="form-contact-container">
                         <div className="margin-container-form-contact">
-                            <h2 className="h2-page-title">Crear cita</h2>
-                            <FormDataAppointment></FormDataAppointment>
+                            {/* <FormDataAppointment></FormDataAppointment> */}
+                            {/* <DateAndTimePickerComponent></DateAndTimePickerComponent> */}
+                            {/* <FormCreateAppointment /> */}
+                            <ResumeAppointment></ResumeAppointment>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/crear-cita" element={<CreateAppointment />}></Route>
                 <Route path="/consultar-cita" element={<CheckAppointment />}></Route>
-                <Route path="/created-appointment" element={<CreatedAppointment />}></Route>
+                <Route path="/cita-creada" element={<CreatedAppointment />}></Route>
             </Routes>
         </>
     );

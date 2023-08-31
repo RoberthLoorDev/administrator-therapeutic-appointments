@@ -61,12 +61,15 @@ function CreatedAppointment() {
     return (
         <div>
             <div className="global-container">
-                <div className="form-contact-container">
-                    <div className="margin-container-form-contact">
-                        <h2 className="h2-page-title">Cita creada correctamente</h2>
+                <div className="created-appointment-container">
+                    <h2 className="title-page">
+                        Cita creada <span className="purple-text">correctamente!</span>
+                    </h2>
+                    <PatientsData></PatientsData>
 
-                        <Link to="/">
-                            <button>Salir</button>
+                    <div className="container-buttons-created-appointment">
+                        <Link to="/" className="no-underline">
+                            <button className="button cancel-button">Salir</button>
                         </Link>
                     </div>
                 </div>
