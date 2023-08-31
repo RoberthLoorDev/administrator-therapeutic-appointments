@@ -68,18 +68,6 @@ const FormCreateAppointment = () => {
                     <textarea></textarea>
                 </div>
             </form>
-
-            <div className="container-buttons-create-appointment">
-                <button className=" create-appointment-buttons-height cancel-button button">
-                    <img className="image-buttons image-flipped-horizontally" src={images.arrow} alt="" />
-                    Regresar
-                </button>
-
-                <button className=" create-appointment-buttons-height action-button button">
-                    Siguiente
-                    <img className="image-buttons" src={images.arrow} alt="" />
-                </button>
-            </div>
         </>
     );
 };
