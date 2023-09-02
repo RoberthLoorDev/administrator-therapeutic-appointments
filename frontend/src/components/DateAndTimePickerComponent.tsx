@@ -1,6 +1,3 @@
-import React from "react";
-import images from "../assets/img/images";
-
 const DateAndTimePickerComponent = () => {
     return (
         <>

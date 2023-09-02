@@ -1,4 +1,4 @@
-//components
+
 import images from "../assets/img/images";
 import NabvarComponent from "../components/NabvarComponent";
 

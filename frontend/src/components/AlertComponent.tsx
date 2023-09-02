@@ -1,6 +1,3 @@
-// AlertComponent.js
-import React from "react";
-
 interface AlertComponentProps {
     message: string;
     isError: boolean;

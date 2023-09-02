@@ -1,7 +1,3 @@
-import React from "react";
-import images from "../assets/img/images";
-import { Link } from "react-router-dom";
-
 const FormCreateAppointment = () => {
     return (
         <>

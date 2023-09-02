@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import PatientsData from "../components/AppointmentData";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import AppointmentData from "../components/AppointmentData";
+import AppointmentData from '../components/AppointmentData';
 
 const CheckAppointment = () => {
     const [userId, setUserId] = useState("");
-    const [appointmentData, setAppointmentData] = useState<null | PatientsData>(null);
+    const [appointmentData, setAppointmentData] = useState<null | AppointmentData>(null);
 
     const consultAppointmentByUserIdentification = async (event: React.FormEvent) => {
         event.preventDefault();

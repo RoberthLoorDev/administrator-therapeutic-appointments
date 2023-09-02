@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import PatientsData from "../components/PatientsData"; // Asegúrate de que la ruta sea correcta
 
 import { format } from "date-fns"; //format date in text
 import { es } from "date-fns/locale"; //format date in text
@@ -65,7 +64,7 @@ function CreatedAppointment() {
                     <h2 className="title-page">
                         Cita creada <span className="purple-text">correctamente!</span>
                     </h2>
-                    <PatientsData></PatientsData>
+                    {/* <PatientsData></PatientsData> */}
 
                     <div className="container-buttons-created-appointment">
                         <Link to="/" className="no-underline">
