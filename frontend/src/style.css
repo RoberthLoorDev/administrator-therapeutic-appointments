@@ -79,6 +79,7 @@ span {
     background-color: #ff5757;
     min-height: 4rem;
     width: 15rem;
+    user-select: none;
 }
 
 .cancel-button:hover {

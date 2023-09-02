@@ -1,8 +1,43 @@
-import React from "react";
-import PatientsData from "../components/PatientsData";
+import React, { useState } from "react";
+import PatientsData from "../components/AppointmentData";
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+import AppointmentData from "../components/AppointmentData";
+
 const CheckAppointment = () => {
+    const [userId, setUserId] = useState("");
+    const [appointmentData, setAppointmentData] = useState<null | PatientsData>(null);
+
+    const consultAppointmentByUserIdentification = async (event: React.FormEvent) => {
+        event.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:5000/api/appointments/consult/${userId}`);
+
+            //consulted information
+            const userDataConsulted = response.data.data.userData;
+            const appointmentDataConsulted = response.data.data.appointment;
+
+            setAppointmentData({
+                names: userDataConsulted.names,
+                lastnames: userDataConsulted.lastnames,
+                age: userDataConsulted.age,
+                date: appointmentDataConsulted.date,
+                hour: appointmentDataConsulted.hour,
+                userIdentification: appointmentDataConsulted.userIdentification,
+                gender: userDataConsulted.gender,
+                typeTherapy: appointmentDataConsulted.typeTherapy,
+                receivedTherapyBefore: appointmentDataConsulted.receivedTherapyBefore,
+                expectedPaymentMethod: appointmentDataConsulted.expectedPaymentMethod,
+                reasonForConsultation: appointmentDataConsulted.reasonForConsultation,
+            });
+
+            console.log(appointmentData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <div className="global-container">
@@ -11,13 +46,23 @@ const CheckAppointment = () => {
                         Consultar <span className="purple-text">cita</span>
                     </h2>
                     <label className="label-form">Ingrese su numero de cedula</label>
-                    <form className="check-appointment-form">
-                        <input type="text" className="input-text-form-style" />
-
-                        <input type="submit" className="button action-button" value="Consultar" />
+                    <form className="check-appointment-form" onSubmit={consultAppointmentByUserIdentification}>
+                        <label>
+                            <input
+                                type="text"
+                                className="input-text-form-style"
+                                value={userId}
+                                onChange={(event) => {
+                                    setUserId(event.target.value);
+                                }}
+                            />
+                        </label>
+                        <button type="submit" className="button action-button">
+                            Consultar
+                        </button>
                     </form>
 
-                    <PatientsData />
+                    {appointmentData && <AppointmentData patient={appointmentData}></AppointmentData>}
 
                     <div className="button-leave-check-appointment">
                         <Link to="/" className="no-underline">
