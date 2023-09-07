@@ -72,7 +72,15 @@ exports.checkAppointmentAvailability = async (appointmentDate) => {
 
     const hoursNotAvailable = appointments.flatMap((appointment) => appointment.hour.split(" "));
 
-    return hoursNotAvailable;
+    const allHours = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+
+    const hoursAvaliables = allHours.filter((hour) => {
+        return !hoursNotAvailable.includes(hour);
+    });
+
+    console.log(hoursAvaliables);
+
+    return { hoursNotAvailable, hoursAvaliables };
 };
 
 exports.getAppointmentForId = async (appointmentId) => {
