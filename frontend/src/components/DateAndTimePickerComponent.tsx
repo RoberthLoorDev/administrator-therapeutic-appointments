@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { format, addDays } from "date-fns";
 import { es } from "date-fns/locale";
+import axios from "axios";
+
+import { globalURL } from "../config/config";
 
 const DateAndTimePickerComponent = () => {
     const [selectedDate, setSelectedDate] = useState<string>();
+    const [selectedHour, setSelectedHour] = useState<string>();
+    const [avaliableHours, SetavaliableHours] = useState<string[]>([]);
+    const [selectedButtonDate, setSelectedButtonDate] = useState<number>(-1);
+    const [selectedButtonHour, setSelectedButtonHour] = useState<number>(-1);
 
     //use effect that shows the next days
     useEffect(() => {
         generateNextDays();
     }, []);
 
+    //generate the date buttons
     const generateNextDays = () => {
         const currentDate = new Date();
         const arrayButtons = [];
@@ -19,10 +27,15 @@ const DateAndTimePickerComponent = () => {
             const formatDate = format(date, "EEEE, dd 'de' MMMM", { locale: es }); //format in spanish
             const formattedDate = formatDate.charAt(0).toUpperCase() + formatDate.slice(1);
 
-            const recordDate = format(date, "dd-MM-yyyy"); //date to schedule appointment in correct format
+            const recordDate = format(date, "yyyy-MM-dd"); //date to schedule appointment in correct format
 
             const button = (
-                <button key={i} className="button-select-day-hour action-button button" onClick={() => handleSelectedDate(recordDate)} value={recordDate}>
+                <button
+                    key={i}
+                    className={`button-select-day-hour action-button button ${selectedButtonDate === i ? "button-select-day-hour-press" : ""}
+                    `}
+                    onClick={() => handleSelectedDate(recordDate, i)}
+                >
                     {formattedDate}
                 </button>
             );
@@ -32,9 +45,40 @@ const DateAndTimePickerComponent = () => {
         return arrayButtons;
     };
 
-    //stores the selected date
-    const handleSelectedDate = (dateString: string) => {
-        setSelectedDate(dateString);
+    const handleSelectedDate = (dateString: string, buttonIndex: number) => {
+        consultHoursAppointment(dateString); //check available hours
+        setSelectedDate(dateString); //date to create the appointment
+        setSelectedButtonDate(buttonIndex); //selected button
+    };
+
+    //get available hours
+    const consultHoursAppointment = async (date: string) => {
+        try {
+            const response = await axios.post(`${globalURL}/api/appointments/check`, {
+                date,
+            });
+            SetavaliableHours(response.data.data.hoursAvaliables);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const generateHoursButtons = () => {
+        return avaliableHours.map((hour, index) => (
+            <button
+                key={index}
+                className={`button-select-day-hour action-button button ${selectedButtonHour === index ? "button-select-day-hour-press" : ""}
+            `}
+                onClick={() => handleSelectedHour(hour, index)}
+            >
+                {hour}
+            </button>
+        ));
+    };
+
+    const handleSelectedHour = (hour: string, index: number) => {
+        setSelectedHour(hour); //save hour to create appointment
+        setSelectedButtonHour(index); //leave hour button selected
     };
 
     return (
@@ -47,16 +91,7 @@ const DateAndTimePickerComponent = () => {
             <h2 className="title-page">
                 Seleeccione la <span className="purple-text">hora deseada</span>
             </h2>
-            <div className="buttons-date-hour-container">
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-                <button className="button-select-day-hour action-button button">10:00PM</button>
-            </div>
+            <div className="buttons-date-hour-container">{generateHoursButtons()}</div>
         </>
     );
 };

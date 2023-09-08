@@ -294,6 +294,17 @@ textarea {
     padding: 1rem;
     font-weight: 500;
 }
+
+.button-select-day-hour-press {
+    background-color: #6151c2;
+    color: white;
+}
+
+.button-select-day-hour-press:hover {
+    background-color: #6151c2;
+    color: white;
+}
+
 .button-select-day-hour:hover {
     color: white;
 }
