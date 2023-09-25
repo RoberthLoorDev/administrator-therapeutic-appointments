@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import AppointmentData from '../components/AppointmentData';
+import AppointmentData from "../components/AppointmentData";
+import { globalURL } from "../config/config";
 
 const CheckAppointment = () => {
     const [userId, setUserId] = useState("");
@@ -11,7 +12,7 @@ const CheckAppointment = () => {
     const consultAppointmentByUserIdentification = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await axios.get(`http://localhost:5000/api/appointments/consult/${userId}`);
+            const response = await axios.get(`${globalURL}/api/appointments/consult/${userId}`);
 
             //consulted information
             const userDataConsulted = response.data.data.userData;
@@ -30,6 +31,7 @@ const CheckAppointment = () => {
                 expectedPaymentMethod: appointmentDataConsulted.expectedPaymentMethod,
                 reasonForConsultation: appointmentDataConsulted.reasonForConsultation,
             });
+            
 
             console.log(appointmentData);
         } catch (error) {

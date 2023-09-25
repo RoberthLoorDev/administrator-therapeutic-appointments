@@ -4,6 +4,7 @@ import { es } from "date-fns/locale";
 import axios from "axios";
 
 import { globalURL } from "../config/config";
+import { Link } from "react-router-dom";
 
 const DateAndTimePickerComponent = () => {
     const [selectedDate, setSelectedDate] = useState<string>();
@@ -49,6 +50,8 @@ const DateAndTimePickerComponent = () => {
         consultHoursAppointment(dateString); //check available hours
         setSelectedDate(dateString); //date to create the appointment
         setSelectedButtonDate(buttonIndex); //selected button
+
+        // console.log(selectedDate);
     };
 
     //get available hours
@@ -79,19 +82,40 @@ const DateAndTimePickerComponent = () => {
     const handleSelectedHour = (hour: string, index: number) => {
         setSelectedHour(hour); //save hour to create appointment
         setSelectedButtonHour(index); //leave hour button selected
+
+        // console.log(selectedHour);
     };
 
     return (
         <>
-            <h2 className="title-page">
-                Seleccione el día de <span className="purple-text">la consulta</span>
-            </h2>
+            <div className="content-container">
+                <h2 className="title-page">
+                    Seleccione el día de <span className="purple-text">la consulta</span>
+                </h2>
 
-            <div className="buttons-date-hour-container">{generateNextDays()}</div>
-            <h2 className="title-page">
-                Seleeccione la <span className="purple-text">hora deseada</span>
-            </h2>
-            <div className="buttons-date-hour-container">{generateHoursButtons()}</div>
+                <div className="buttons-date-hour-container">{generateNextDays()}</div>
+
+                <div>
+                    <h2 className="title-page">
+                        Seleeccione la <span className="purple-text">hora deseada</span>
+                    </h2>
+
+                    <div className="buttons-date-hour-container">{generateHoursButtons()}</div>
+                </div>
+
+                <Link
+                    to={{
+                        pathname: "/crear-cita/formulario",
+                        search: `?selectedDate=${selectedDate}&selectedHour=${selectedHour}`,
+                    }}
+                >
+                    <button disabled={!selectedDate || !selectedHour}>Siguiente</button>
+                </Link>
+
+                <Link to={"/"}>
+                    <button>Salir</button>
+                </Link>
+            </div>
         </>
     );
 };

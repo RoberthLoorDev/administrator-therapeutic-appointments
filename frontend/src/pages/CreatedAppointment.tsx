@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { format } from "date-fns"; //format date in text
 import { es } from "date-fns/locale"; //format date in text
+import { globalURL } from "../config/config";
 
 // Definir tipos para la respuesta de la API
 interface AppointmentData {
@@ -42,7 +43,7 @@ function CreatedAppointment() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/appointments/${appointmentId}`)
+            .get(`${globalURL}/api/appointments/${appointmentId}`)
             .then((response) => {
                 const responseData = response.data;
                 const date = new Date(responseData.data.appointment.date);

@@ -1,4 +1,3 @@
-
 import images from "../assets/img/images";
 import NabvarComponent from "../components/NabvarComponent";
 
@@ -15,7 +14,7 @@ function Home() {
                     </h1>
 
                     <div className="header-home-buttons">
-                        <Link to={"/crear-cita"} className="no-underline">
+                        <Link to={"/crear-cita/hora-fecha"} className="no-underline">
                             <button className="home-button">
                                 <img className="image-buttons" src={images.icon_create_appointment} alt="" />
                                 Crear cita
