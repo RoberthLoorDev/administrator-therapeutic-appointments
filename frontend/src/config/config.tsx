@@ -1,2 +1,2 @@
-const globalURL = "http://localhost:5000";
+const globalURL = "https://administrator-therapeutic-appointments.vercel.app";
 export { globalURL };
