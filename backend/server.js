@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "https://citas-toainga.vercel.app/",
 };
 app.use(cors(corsOptions));
 
