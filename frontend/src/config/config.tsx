@@ -1,2 +1,3 @@
-const globalURL = "https://administrator-therapeutic-appointments.vercel.app";
+const globalURL = "https://backend-administrator-therapeutic-appointments-toainga.vercel.app";
+
 export { globalURL };
