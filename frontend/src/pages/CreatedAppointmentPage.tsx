@@ -9,12 +9,20 @@ const CreatedAppointmentPage = () => {
     // Ahora puedes acceder a los datos en formData y mostrarlos en esta página
 
     return (
-        <div>
-            <h1>CITA CREADA</h1>
-            <AppointmentData patient={formData}></AppointmentData>
-            <Link to={"/"}>
-                <button>Salir</button>
-            </Link>
+        <div className="global-container-created">
+            <h1 className="title-page">
+                {" "}
+                <span className="purple-text">CITA</span> CREADA!
+            </h1>
+            <div className="label-form">Usted acaba de crear una cita para terapia ocupacional con los siguientes datos:</div>
+            <div className="appointment-data-container">
+                <AppointmentData patient={formData}></AppointmentData>
+            </div>
+            <div className="container-buttons-process-cancel">
+                <Link to={"/"}>
+                    <button className="button-back-cancel">Salir</button>
+                </Link>
+            </div>
         </div>
     );
 };

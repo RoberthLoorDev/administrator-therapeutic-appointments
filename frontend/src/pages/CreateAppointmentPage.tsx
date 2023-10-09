@@ -28,14 +28,23 @@ const CreateAppointmentPage = () => {
         <div>
             <div className="global-container">
                 <div className="created-appointment-container">
-                    <h1>Resumen de la cita</h1>
-                    <p>Por favor, revise los datos antes de crear la cita. Asegúrese de que los datos son correctos, en caso de no ser así, puede regresar y llenar los datos requeridos.</p>
-                    <AppointmentData patient={formDataJson}></AppointmentData>
+                    <h1 className="title-page">
+                        {" "}
+                        <span className="purple-text">Resumen</span> de la cita
+                    </h1>
+                    <p className="label-form">Por favor, revise los datos antes de crear la cita. Asegúrese de que los datos son correctos, en caso de no ser así, puede regresar y llenar los datos requeridos.</p>
+                    <div className="appointment-data-container">
+                        <AppointmentData patient={formDataJson}></AppointmentData>
+                    </div>
 
-                    <button onClick={handleCreateAppointment}>Crear cita</button>
-                    <Link to={"/"}>
-                        <button>Cancelar</button>
-                    </Link>
+                    <div className="container-buttons-process-cancel">
+                        <button className="button-proceed" onClick={handleCreateAppointment}>
+                            Crear cita
+                        </button>
+                        <Link to={"/"}>
+                            <button className="button-back-cancel">Cancelar</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

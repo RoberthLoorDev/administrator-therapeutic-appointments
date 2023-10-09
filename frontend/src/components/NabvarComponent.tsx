@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import images from "../assets/img/images";
 
 function NabvarComponent() {
@@ -11,7 +12,9 @@ function NabvarComponent() {
                     </div>
                     <div className="options-navbar">
                         <span className="text-light">Sobre mí</span>
-                        <span className="text-light text-underline">Iniciar sesión</span>
+                        <Link to={"/login"}>
+                            <span className="text-light text-underline">Iniciar sesión</span>
+                        </Link>
                     </div>
                 </section>
             </div>

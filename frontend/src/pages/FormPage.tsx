@@ -103,18 +103,23 @@ const FormCreateAppointment = () => {
                     <textarea name="reasonForConsultation" value={formData.reasonForConsultation} onChange={handleInputChange}></textarea>
                 </div>
             </form>
-            <Link
-                to={{
-                    pathname: "/crear-cita/verificar",
-                    search: `?formData=${encodeURIComponent(JSON.stringify(formData))}`,
-                }}
-            >
-                <button type="button">Siguiente</button>
-            </Link>
 
-            <Link to={"/crear-cita/hora-fecha"}>
-                <button>Atrás</button>
-            </Link>
+            <div className="container-buttons-process-cancel">
+                <Link
+                    to={{
+                        pathname: "/crear-cita/verificar",
+                        search: `?formData=${encodeURIComponent(JSON.stringify(formData))}`,
+                    }}
+                >
+                    <button className="button-proceed" type="button">
+                        Siguiente
+                    </button>
+                </Link>
+
+                <Link to={"/crear-cita/hora-fecha"}>
+                    <button className="button-back-cancel">Atrás</button>
+                </Link>
+            </div>
         </div>
     );
 };

@@ -67,7 +67,7 @@ const CheckAppointment = () => {
 
                     <div className="button-leave-check-appointment">
                         <Link to="/" className="no-underline">
-                            <button className="cancel-button button">Salir</button>
+                            <button style={{marginLeft: '8%'}} className="cancel-button button">Salir</button>
                         </Link>
                     </div>
                 </section>

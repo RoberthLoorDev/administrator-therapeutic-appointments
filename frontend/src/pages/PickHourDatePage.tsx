@@ -96,25 +96,34 @@ const DateAndTimePickerComponent = () => {
                 <div className="buttons-date-hour-container">{generateNextDays()}</div>
 
                 <div>
-                    <h2 className="title-page">
-                        Seleeccione la <span className="purple-text">hora deseada</span>
-                    </h2>
+                    {selectedDate && (
+                        <h2 className="title-page">
+                            Seleccione la <span className="purple-text">hora deseada</span>
+                        </h2>
+                    )}
 
                     <div className="buttons-date-hour-container">{generateHoursButtons()}</div>
                 </div>
 
-                <Link
-                    to={{
-                        pathname: "/crear-cita/formulario",
-                        search: `?selectedDate=${selectedDate}&selectedHour=${selectedHour}`,
-                    }}
-                >
-                    <button disabled={!selectedDate || !selectedHour}>Siguiente</button>
-                </Link>
-
-                <Link to={"/"}>
-                    <button>Salir</button>
-                </Link>
+                <div className="button-container-process-cancel">
+                    <div>
+                        <Link
+                            to={{
+                                pathname: "/crear-cita/formulario",
+                                search: `?selectedDate=${selectedDate}&selectedHour=${selectedHour}`,
+                            }}
+                        >
+                            <button className={!selectedDate || !selectedHour ? "button-proceed-disable" : "button-proceed"} disabled={!selectedDate || !selectedHour}>
+                                Siguiente
+                            </button>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to={"/"}>
+                            <button className="button-back-cancel">Salir</button>
+                        </Link>
+                    </div>
+                </div>
             </div>
         </>
     );

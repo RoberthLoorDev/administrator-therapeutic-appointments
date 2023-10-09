@@ -59,19 +59,17 @@ function CreatedAppointment() {
     }, [appointmentId]);
 
     return (
-        <div>
-            <div className="global-container">
-                <div className="created-appointment-container">
-                    <h2 className="title-page">
-                        Cita creada <span className="purple-text">correctamente!</span>
-                    </h2>
-                    {/* <PatientsData></PatientsData> */}
+        <div className="global-container">
+            <div className="created-appointment-container">
+                <h2 className="title-page">
+                    Cita creada <span className="purple-text">correctamente!</span>
+                </h2>
+                {/* <PatientsData></PatientsData> */}
 
-                    <div className="container-buttons-created-appointment">
-                        <Link to="/" className="no-underline">
-                            <button className="button cancel-button">Salir</button>
-                        </Link>
-                    </div>
+                <div className="container-buttons-created-appointment">
+                    <Link to="/" className="no-underline">
+                        <button className="button cancel-button">Salir</button>
+                    </Link>
                 </div>
             </div>
         </div>

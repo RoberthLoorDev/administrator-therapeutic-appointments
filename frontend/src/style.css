@@ -58,6 +58,44 @@ span {
     font-weight: 600;
 }
 
+.button-proceed {
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background-color: #6461da;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+}
+
+.button-proceed-disable {
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: not-allowed;
+    color: white;
+    background-color: #dbd4ff;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+}
+
+.button-back-cancel {
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background-color: #ff5757;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
 .action-button {
     background-color: #5956c2;
     width: 15rem;
@@ -274,10 +312,9 @@ textarea {
 
 /*---------------------*/
 /*----------- CREATE APPOINTMENT*/
-.content-container{
+.content-container {
     margin: 5rem 20rem;
 }
-
 
 .buttons-date-hour-container {
     display: flex;
@@ -372,4 +409,54 @@ textarea {
 
 .button-navigation-container button {
     margin: 0 1rem;
+}
+
+.button-container-process-cancel {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.container-buttons-process-cancel {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.appointment-data-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global-container-created {
+    margin-top: 5rem;
+    padding: 0 20rem;
+}
+
+/*LOGIN*/
+
+.login-global-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.form-login-container {
+    width: 24%;
+}
+
+.width-button-login {
+    width: 101%;
+    margin-top: 3rem;
+}
+
+.forget-your-password {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.width-100{
+    width: 100%;
 }
