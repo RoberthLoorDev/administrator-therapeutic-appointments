@@ -1,4 +1,3 @@
-const globalURL = 'http://localhost:5000';
-
+const globalURL = "https://backend-administrator-therapeutic-appointments-toainga.vercel.app";
 
 export { globalURL };
