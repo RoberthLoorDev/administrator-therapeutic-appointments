@@ -27,42 +27,42 @@ function AppointmentData({ patient }: AppointmentDataProps) {
     };
 
     return (
-        <>
+        <div className="container-data-appointment">
             <div className="container-data-patient">
-                <span>
+                <span className="span-data-appointment">
                     <b>Paciente: </b>
-                    <span>{`${patient.names} ${patient.lastnames}`}</span>
+                    <span className="span-data-appointment">{`${patient.names} ${patient.lastnames}`}</span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>Edad: </b>
-                    <span>{patient.age}</span>
+                    <span className="span-data-appointment">{patient.age}</span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>Cédula: </b>
-                    <span>{patient.userIdentification}</span>
+                    <span className="span-data-appointment">{patient.userIdentification}</span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>genero: </b>
-                    <span> {patient.gender} </span>
+                    <span className="span-data-appointment"> {patient.gender} </span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>Tipo de terapia: </b>
-                    <span>{patient.typeTherapy}</span>
+                    <span className="span-data-appointment">{patient.typeTherapy}</span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>Día: </b>
-                    <span>{formatDate(patient.date)}</span>
+                    <span className="span-data-appointment">{formatDate(patient.date)}</span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>Hora de cita: </b>
-                    <span>{patient.hour}</span>
+                    <span className="span-data-appointment">{patient.hour}</span>
                 </span>
-                <span>
+                <span className="span-data-appointment">
                     <b>Motivo de la consulta: </b>
-                    <span>{patient.reasonForConsultation}</span>
+                    <span className="span-data-appointment">{patient.reasonForConsultation}</span>
                 </span>
             </div>
-        </>
+        </div>
     );
 }
 

@@ -31,7 +31,6 @@ const CheckAppointment = () => {
                 expectedPaymentMethod: appointmentDataConsulted.expectedPaymentMethod,
                 reasonForConsultation: appointmentDataConsulted.reasonForConsultation,
             });
-            
 
             console.log(appointmentData);
         } catch (error) {
@@ -41,13 +40,16 @@ const CheckAppointment = () => {
 
     return (
         <>
-            <div className="global-container">
+            <div className="global-container-check-appointment">
                 <section className="check-appointment-container">
                     <h2 className="title-page">
                         Consultar <span className="purple-text">cita</span>
                     </h2>
                     <label className="label-form">Ingrese su numero de cedula</label>
-                    <form className="check-appointment-form" onSubmit={consultAppointmentByUserIdentification}>
+                    <form
+                        className="check-appointment-form"
+                        onSubmit={consultAppointmentByUserIdentification}
+                    >
                         <label>
                             <input
                                 type="text"
@@ -67,7 +69,7 @@ const CheckAppointment = () => {
 
                     <div className="button-leave-check-appointment">
                         <Link to="/" className="no-underline">
-                            <button style={{marginLeft: '8%'}} className="cancel-button button">Salir</button>
+                            <button className="cancel-button button">Salir</button>
                         </Link>
                     </div>
                 </section>

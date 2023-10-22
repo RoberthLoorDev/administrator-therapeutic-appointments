@@ -33,7 +33,9 @@ const DateAndTimePickerComponent = () => {
             const button = (
                 <button
                     key={i}
-                    className={`button-select-day-hour action-button button ${selectedButtonDate === i ? "button-select-day-hour-press" : ""}
+                    className={`button-select-day-hour action-button button ${
+                        selectedButtonDate === i ? "button-select-day-hour-press" : ""
+                    }
                     `}
                     onClick={() => handleSelectedDate(recordDate, i)}
                 >
@@ -70,7 +72,9 @@ const DateAndTimePickerComponent = () => {
         return avaliableHours.map((hour, index) => (
             <button
                 key={index}
-                className={`button-select-day-hour action-button button ${selectedButtonHour === index ? "button-select-day-hour-press" : ""}
+                className={`button-select-day-hour ${
+                    selectedButtonHour === index ? "button-select-day-hour-press" : ""
+                }
             `}
                 onClick={() => handleSelectedHour(hour, index)}
             >
@@ -113,7 +117,14 @@ const DateAndTimePickerComponent = () => {
                                 search: `?selectedDate=${selectedDate}&selectedHour=${selectedHour}`,
                             }}
                         >
-                            <button className={!selectedDate || !selectedHour ? "button-proceed-disable" : "button-proceed"} disabled={!selectedDate || !selectedHour}>
+                            <button
+                                className={
+                                    !selectedDate || !selectedHour
+                                        ? "button-proceed-disable"
+                                        : "button-proceed"
+                                }
+                                disabled={!selectedDate || !selectedHour}
+                            >
                                 Siguiente
                             </button>
                         </Link>

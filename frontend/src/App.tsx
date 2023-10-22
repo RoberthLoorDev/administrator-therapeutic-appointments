@@ -6,7 +6,6 @@ import "./style.css";
 //pages
 import Home from "./pages/Home";
 import CheckAppointment from "./pages/CheckAppointment";
-import CreatedAppointment from "./pages/CreatedAppointment";
 import PickHourDatePage from "./pages/PickHourDatePage";
 import FormPage from "./pages/FormPage";
 import CreateAppointmentPage from "./pages/CreateAppointmentPage";

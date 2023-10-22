@@ -99,7 +99,7 @@ const FormCreateAppointment = () => {
                     </select>
                 </div>
                 <div className="label-input">
-                    <label className="label-form">Motivo de la consulta</label>
+                    <label className="label-form lable-textarea">Motivo de la consulta</label>
                     <textarea name="reasonForConsultation" value={formData.reasonForConsultation} onChange={handleInputChange}></textarea>
                 </div>
             </form>

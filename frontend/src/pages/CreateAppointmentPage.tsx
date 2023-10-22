@@ -26,13 +26,16 @@ const CreateAppointmentPage = () => {
 
     return (
         <div>
-            <div className="global-container">
+            <div className="resume-container">
                 <div className="created-appointment-container">
                     <h1 className="title-page">
                         {" "}
                         <span className="purple-text">Resumen</span> de la cita
                     </h1>
-                    <p className="label-form">Por favor, revise los datos antes de crear la cita. Asegúrese de que los datos son correctos, en caso de no ser así, puede regresar y llenar los datos requeridos.</p>
+                    <p className="label-form">
+                        Por favor, revise los datos antes de crear la cita. Asegúrese de que los datos son
+                        correctos, en caso de no ser así, puede regresar y llenar los datos requeridos.
+                    </p>
                     <div className="appointment-data-container">
                         <AppointmentData patient={formDataJson}></AppointmentData>
                     </div>

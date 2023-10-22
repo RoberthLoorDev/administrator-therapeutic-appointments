@@ -28,14 +28,6 @@ span {
 
 /*Common Styles*/
 
-.global-container {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: center;
-    padding: 0 20rem;
-    height: 100vh;
-}
-
 .text-light {
     font-size: 1.5rem;
     font-weight: 400;
@@ -144,6 +136,7 @@ span {
     font-weight: 600;
     font-size: 1.8rem;
     user-select: none;
+    margin-right: 2rem;
 }
 
 .home-button:hover {
@@ -159,6 +152,8 @@ span {
 
 .title-page {
     font-size: 3.8rem;
+    line-height: 4rem;
+    margin-bottom: 2rem;
 }
 
 .label-form {
@@ -180,7 +175,7 @@ select {
 }
 
 textarea {
-    width: 62rem;
+    width: 48rem;
     resize: none;
     height: 10rem;
     border: none;
@@ -207,7 +202,7 @@ textarea {
 /*----------------*/
 /*------ HOME PAGE*/
 .home-container {
-    margin: 0 14rem;
+    margin: 0 10rem;
 }
 
 .navbar-section {
@@ -215,6 +210,9 @@ textarea {
     align-items: center;
     justify-content: space-between;
     height: 8rem;
+}
+.nabvar-container {
+    margin: 0 10rem;
 }
 
 .image-logo {
@@ -260,6 +258,7 @@ textarea {
 .h1-header-home {
     font-size: 6rem;
     line-height: 7rem;
+    width: 90%;
 }
 
 .purple-text {
@@ -274,16 +273,33 @@ textarea {
 
 .header-home-buttons {
     display: flex;
-    justify-content: space-between;
     width: 77%;
     margin-top: 3rem;
+    margin-bottom: 10rem;
+}
+
+.image-header {
+    max-width: 46rem;
+    height: auto;
 }
 
 /*-----CHECK APPOINTMENT PAGE*/
+
+.container-data-appointment {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.global-container-check-appointment {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+}
 .check-appointment-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 50%;
 }
 
 .check-appointment-form {
@@ -376,8 +392,7 @@ textarea {
 }
 
 .resume-container {
-    display: flex;
-    flex-direction: column;
+    margin: 5rem 20%;
 }
 
 .buttons-resume-appointment-component {
@@ -387,11 +402,6 @@ textarea {
     height: 10rem;
     justify-content: space-between;
     margin-top: 2rem;
-}
-
-.created-appointment-container {
-    display: flex;
-    flex-direction: column;
 }
 
 .container-buttons-created-appointment {
@@ -457,6 +467,134 @@ textarea {
     margin-top: 1rem;
 }
 
-.width-100{
+.width-100 {
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        width: 100%;
+        margin: 0;
+    }
+
+    .logo-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo-title span {
+        text-align: center;
+    }
+
+    .options-navbar span {
+        display: none;
+    }
+
+    .header-section-home {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-section-home img {
+        width: 100%;
+    }
+
+    .h1-header-home {
+        margin: 2rem 0 0 0;
+        font-size: 4rem;
+        line-height: 7rem;
+        width: 75%;
+        margin-left: 5rem;
+        font-size: 3rem;
+        text-align: center;
+        line-height: 3.5rem;
+    }
+
+    .h1-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        margin-bottom: -5rem;
+    }
+
+    .header-home-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-button {
+        margin-bottom: 1rem;
+    }
+
+    .image-header {
+        max-width: 70%;
+    }
+
+    .nabvar-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .home-button {
+        margin: 0.4rem 0;
+    }
+
+    .check-appointment-container {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .check-appointment-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action-button {
+        margin-top: 2rem;
+    }
+
+    .button-leave-check-appointment {
+        margin-top: 1rem;
+    }
+
+    .container-data-patient {
+        max-width: 2rem;
+        min-width: 30rem;
+    }
+
+    /*CHECK APPOINTMENT PAGE*/
+
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 2rem 2rem;
+    }
+
+    .action-button {
+        margin: 0.5rem 0.5rem;
+    }
+
+    .buttons-date-hour-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .button-select-day-hour {
+        width: 47%;
+    }
+
+    textarea {
+        width: 120%;
+    }
+    .resume-container {
+        margin: 5rem 1.5rem;
+    }
 }
