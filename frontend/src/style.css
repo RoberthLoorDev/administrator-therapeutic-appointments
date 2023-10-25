@@ -330,7 +330,11 @@ textarea {
 /*----------- CREATE APPOINTMENT*/
 .content-container {
     margin: 5rem 20rem;
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 .buttons-date-hour-container {
     display: flex;

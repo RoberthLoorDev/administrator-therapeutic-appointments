@@ -72,7 +72,7 @@ const DateAndTimePickerComponent = () => {
         return avaliableHours.map((hour, index) => (
             <button
                 key={index}
-                className={`button-select-day-hour ${
+                className={`button-select-day-hour action-button button ${
                     selectedButtonHour === index ? "button-select-day-hour-press" : ""
                 }
             `}
