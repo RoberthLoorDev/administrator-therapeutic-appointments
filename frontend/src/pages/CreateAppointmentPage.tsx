@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import AppointmentData from "../components/AppointmentData";
 import axios from "axios";
-import { globalURL } from "../config/config";
+import { APIREST_LINK } from "../config/config";
 
 const CreateAppointmentPage = () => {
     const location = useLocation();
@@ -13,7 +13,7 @@ const CreateAppointmentPage = () => {
 
     const handleCreateAppointment = async () => {
         try {
-            const response = await axios.post(`${globalURL}/api/appointments/create`, formDataJson);
+            const response = await axios.post(`${APIREST_LINK}/api/appointments/create`, formDataJson);
 
             if (response.status === 200) {
                 // Redirige a la página "/cita-creada" con formDataJson como parámetro

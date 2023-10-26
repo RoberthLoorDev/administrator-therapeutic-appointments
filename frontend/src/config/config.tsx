@@ -1,5 +1,3 @@
-// const globalURL = 'https://backend-administrator-therapeutic-appointments-toainga.vercel.app';
-const globalURL = 'http://localhost:5000';
+const APIREST_LINK = process.env.REACT_APP_APIREST;
 
-
-export { globalURL };
+export { APIREST_LINK };

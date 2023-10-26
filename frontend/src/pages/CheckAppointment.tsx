@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 import AppointmentData from "../components/AppointmentData";
-import { globalURL } from "../config/config";
+
+import { APIREST_LINK } from "../config/config";
 
 const CheckAppointment = () => {
     const [userId, setUserId] = useState("");
@@ -12,7 +13,7 @@ const CheckAppointment = () => {
     const consultAppointmentByUserIdentification = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
-            const response = await axios.get(`${globalURL}/api/appointments/consult/${userId}`);
+            const response = await axios.get(`${APIREST_LINK}/api/appointments/consult/${userId}`);
 
             //consulted information
             const userDataConsulted = response.data.data.userData;

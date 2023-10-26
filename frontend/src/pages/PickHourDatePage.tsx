@@ -3,7 +3,8 @@ import { format, addDays } from "date-fns";
 import { es } from "date-fns/locale";
 import axios from "axios";
 
-import { globalURL } from "../config/config";
+import { APIREST_LINK } from "../config/config";
+
 import { Link } from "react-router-dom";
 
 const DateAndTimePickerComponent = () => {
@@ -59,7 +60,7 @@ const DateAndTimePickerComponent = () => {
     //get available hours
     const consultHoursAppointment = async (date: string) => {
         try {
-            const response = await axios.post(`${globalURL}/api/appointments/check`, {
+            const response = await axios.post(`${APIREST_LINK}/api/appointments/check`, {
                 date,
             });
             SetavaliableHours(response.data.data.hoursAvaliables);
