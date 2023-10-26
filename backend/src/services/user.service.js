@@ -17,6 +17,7 @@ exports.createUser = async (userBody) => {
                     email: userBody.email,
                     gender: userBody.gender,
                     age: userBody.age,
+                    phone: userBody.phone,
                 },
             }
         );
@@ -30,6 +31,7 @@ exports.createUser = async (userBody) => {
             email: userBody.email,
             gender: userBody.gender,
             age: userBody.age,
+            phone: userBody.phone,
         });
 
         const userCreated = await newUser.save();

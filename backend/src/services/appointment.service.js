@@ -7,11 +7,12 @@ exports.createAppointment = async (appointmentBody) => {
     //user data extraction
     const userBody = {
         names: appointmentBody.names,
-        lastnames: appointmentBody.lastnames,
+        // lastnames: appointmentBody.lastnames,
         identification: appointmentBody.identification,
         age: appointmentBody.age,
         email: appointmentBody.email,
         gender: appointmentBody.gender,
+        phone: appointmentBody.phone,
     };
     const userCreation = await UserService.createUser(userBody);
 
@@ -109,7 +110,20 @@ const sendMailToAdmin = async (appointmentCreated, userCreation) => {
     const weekDay = weekDaysArray[dateEntered.getDay()];
 
     //months
-    const monthsArray = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const monthsArray = [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+    ];
     const month = monthsArray[dateEntered.getMonth()];
 
     //year
@@ -134,11 +148,15 @@ const sendMailToAdmin = async (appointmentCreated, userCreation) => {
                 Recibió terapia previamente: ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}
                 Método de pago esperado: ${appointmentCreated.expectedPaymentMethod}
                 Motivo de consulta: ${appointmentCreated.reasonForConsultation}`,
-        html: `<p>Se ha creado una nueva cita para el paciente ${userCreation.names} ${userCreation.lastnames}.</p>
+        html: `<p>Se ha creado una nueva cita para el paciente ${userCreation.names} ${
+            userCreation.lastnames
+        }.</p>
                 <p><strong>Fecha:</strong> ${weekDay}, ${day} de ${month} del ${year}</p>
                 <p><strong>Hora:</strong> ${appointmentCreated.hour}</p>
                 <p><strong>Tipo de terapia:</strong> ${appointmentCreated.typeTherapy}</p>
-                <p><strong>Recibió terapia previamente:</strong> ${appointmentCreated.receivedTherapyBefore ? "Sí" : "No"}</p>
+                <p><strong>Recibió terapia previamente:</strong> ${
+                    appointmentCreated.receivedTherapyBefore ? "Sí" : "No"
+                }</p>
                 <p><strong>Método de pago esperado:</strong> ${appointmentCreated.expectedPaymentMethod}</p>
                 <p><strong>Motivo de consulta:</strong> ${appointmentCreated.reasonForConsultation}</p>`,
     };
