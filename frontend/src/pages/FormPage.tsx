@@ -168,6 +168,9 @@ const FormCreateAppointment = () => {
                 </form>
 
                 <div className="container-buttons-process-cancel">
+                    <Link to={"/crear-cita/hora-fecha"}>
+                        <button className="button-back-cancel">Atrás</button>
+                    </Link>
                     <Link
                         to={{
                             pathname: "/crear-cita/verificar",
@@ -177,10 +180,6 @@ const FormCreateAppointment = () => {
                         <button className="button-proceed" type="button">
                             Siguiente
                         </button>
-                    </Link>
-
-                    <Link to={"/crear-cita/hora-fecha"}>
-                        <button className="button-back-cancel">Atrás</button>
                     </Link>
                 </div>
             </div>

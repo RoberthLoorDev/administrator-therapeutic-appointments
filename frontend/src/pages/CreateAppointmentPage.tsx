@@ -41,12 +41,13 @@ const CreateAppointmentPage = () => {
                     </div>
 
                     <div className="container-buttons-process-cancel">
-                        <button className="button-proceed" onClick={handleCreateAppointment}>
-                            Crear cita
-                        </button>
                         <Link to={"/"}>
                             <button className="button-back-cancel">Cancelar</button>
                         </Link>
+
+                        <button className="button-proceed" onClick={handleCreateAppointment}>
+                            Crear cita
+                        </button>
                     </div>
                 </div>
             </div>

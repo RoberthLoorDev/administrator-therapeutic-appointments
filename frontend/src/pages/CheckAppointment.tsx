@@ -5,12 +5,15 @@ import axios from "axios";
 import AppointmentData from "../components/AppointmentData";
 
 import { APIREST_LINK } from "../config/config";
+import LoadingComponent from "../components/LoadingComponent";
 
 const CheckAppointment = () => {
     const [userId, setUserId] = useState("");
     const [appointmentData, setAppointmentData] = useState<null | AppointmentData>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const consultAppointmentByUserIdentification = async (event: React.FormEvent) => {
+        setIsLoading(true);
         event.preventDefault();
         try {
             const response = await axios.get(`${APIREST_LINK}/api/appointments/consult/${userId}`);
@@ -34,13 +37,16 @@ const CheckAppointment = () => {
             });
 
             console.log(appointmentData);
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
+            setIsLoading(false);
         }
     };
 
     return (
         <>
+            {isLoading ? <LoadingComponent></LoadingComponent> : ""}
             <div className="global-container-check-appointment">
                 <section className="check-appointment-container">
                     <h2 className="title-page">
